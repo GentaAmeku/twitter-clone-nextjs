@@ -1,0 +1,33 @@
+{
+	"name": "x-clone",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@mantine/core": "^7.16.2",
+		"@mantine/hooks": "^7.16.2",
+		"@tabler/icons-react": "^3.29.0",
+		"clsx": "^2.1.1",
+		"jotai": "^2.11.2",
+		"next": "15.1.6",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@tailwindcss/postcss": "^4.0.0",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"postcss": "^8.5.1",
+		"postcss-preset-mantine": "^1.17.0",
+		"postcss-simple-vars": "^7.0.1",
+		"tailwindcss": "^4.0.0",
+		"typescript": "^5"
+	}
+}
