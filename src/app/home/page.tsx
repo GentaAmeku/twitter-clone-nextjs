@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<>
+		<main>
 			<HeaderBox>
 				<Tabs>
 					<TabA>
@@ -24,6 +24,6 @@ export default function Home() {
 					</TabB>
 				</Tabs>
 			</HeaderBox>
-		</>
+		</main>
 	);
 }

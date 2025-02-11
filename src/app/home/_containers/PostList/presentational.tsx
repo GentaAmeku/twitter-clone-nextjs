@@ -1,3 +1,9 @@
+import PostCard from "./components/PostCard";
+
 export default function PostList() {
-	return <div>PostList</div>;
+	return (
+		<div>
+			<PostCard />
+		</div>
+	);
 }

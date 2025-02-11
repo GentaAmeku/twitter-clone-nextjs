@@ -1,7 +1,4 @@
-"use client";
-
-import { useIsMobile } from "@/app/_lib/hooks";
-import { Box, Col, Flex, Space, Stack } from "@/app/_lib/mantine/core";
+import { Box, Flex, Space, Stack } from "@/app/_lib/mantine/core";
 import {
 	IconBell,
 	IconDotsCircleHorizontal,
@@ -14,12 +11,12 @@ import HeaderBox from "../HeaderBox";
 import BrandActionIcon from "./components/BrandActionIcon";
 import NaviButton from "./components/NaviButton";
 import PostButton from "./components/PostButton";
+import ResponsiveCol from "./components/ResponsiveCol";
 import ProfileButton from "./containers/ProfileButton";
 
 export default function Navigation() {
-	const isMoblie = useIsMobile();
 	return (
-		<Col span={isMoblie ? 1 : 2.7} className="border-r h-screen">
+		<ResponsiveCol>
 			<nav>
 				<Flex direction="column" justify="space-between" h="100vh">
 					<Box>
@@ -50,6 +47,6 @@ export default function Navigation() {
 					</Box>
 				</Flex>
 			</nav>
-		</Col>
+		</ResponsiveCol>
 	);
 }
