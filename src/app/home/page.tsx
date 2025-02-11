@@ -1,5 +1,5 @@
 import HeaderBox from "@/app/_components/HeaderBox";
-import Tabs, { TabA, TabB } from "@/app/_components/Tabs";
+import Tabs, { TabA, TabB } from "@/app/home/_components/Tabs";
 import PostInput from "@/app/home/_containers/PostInput";
 import PostList from "@/app/home/_containers/PostList";
 import type { Metadata } from "next";

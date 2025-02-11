@@ -1,7 +1,6 @@
 "use client";
 
 import { Tabs as MantineTabs, Text } from "@/app/_lib/mantine/core";
-import PostInput from "@/app/home/_containers/PostInput";
 import { useState } from "react";
 import { TABS, TAB_A, TAB_B } from "./data";
 
@@ -40,22 +39,16 @@ function Tabs({ children }: { children: React.ReactNode }) {
 	);
 }
 
-Tabs.A = function TabsA({ children }: { children: React.ReactNode }) {
-	return (
-		<Panel value={TAB_A}>
-			<PostInput />
-			{children}
-		</Panel>
-	);
+export const TabA = function TabsA({
+	children,
+}: { children: React.ReactNode }) {
+	return <Panel value={TAB_A}>{children}</Panel>;
 };
 
-Tabs.B = function TabsB({ children }: { children: React.ReactNode }) {
-	return (
-		<Panel value={TAB_B}>
-			<PostInput />
-			{children}
-		</Panel>
-	);
+export const TabB = function TabsB({
+	children,
+}: { children: React.ReactNode }) {
+	return <Panel value={TAB_B}>{children}</Panel>;
 };
 
 export default Tabs;
