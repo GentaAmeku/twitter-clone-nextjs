@@ -1,14 +1,16 @@
 import { ActionIcon, Avatar, Box, Flex, Text } from "@/app/_lib/mantine/core";
 import { colors } from "@/app/_styles/colors";
 import {
-	IconBrandLine,
 	IconBrandNextjs,
-	IconChartBar,
 	IconDots,
-	IconHeart,
-	IconRepeat,
 	IconRosetteDiscountCheckFilled,
 } from "@tabler/icons-react";
+import Share from "./components/Share";
+import Views from "./components/Views";
+import Bookmark from "./containers/Bookmark";
+import Like from "./containers/Like";
+import Reply from "./containers/Reply";
+import Repost from "./containers/Repost";
 
 export default function PostCard() {
 	return (
@@ -27,9 +29,9 @@ export default function PostCard() {
 								Next.js
 							</Text>
 							<div>
-								<IconRosetteDiscountCheckFilled color={colors.blue} size={21} />
+								<IconRosetteDiscountCheckFilled color={colors.blue} size={18} />
 							</div>
-							<Text size="md" c="gray" className="tracking-tight">
+							<Text size="md" c={colors.gray} className="tracking-tight">
 								@nextjs · Oct 25,2024
 							</Text>
 						</Flex>
@@ -44,44 +46,18 @@ export default function PostCard() {
 							<IconDots color="gray" size={21} />
 						</ActionIcon>
 					</Flex>
-
 					<Text size="md" className="tracking-tight">
 						Next.js Conf starts in one hour. Join us live at 9:00 AM PT.
 					</Text>
-
-					<Flex gap={2} className="-ml-2">
-						<ActionIcon
-							variant="subtle"
-							radius="xl"
-							size={36}
-							aria-label="image"
-						>
-							<IconBrandLine size={18} />
-						</ActionIcon>
-						<ActionIcon
-							variant="subtle"
-							radius="xl"
-							size={36}
-							aria-label="image"
-						>
-							<IconRepeat size={18} />
-						</ActionIcon>
-						<ActionIcon
-							variant="subtle"
-							radius="xl"
-							size={36}
-							aria-label="image"
-						>
-							<IconHeart size={18} />
-						</ActionIcon>
-						<ActionIcon
-							variant="subtle"
-							radius="xl"
-							size={36}
-							aria-label="image"
-						>
-							<IconChartBar size={18} />
-						</ActionIcon>
+					<Flex gap={51} className="-ml-2 mt-1 w-full">
+						<Reply />
+						<Repost />
+						<Like />
+						<Views />
+						<Flex>
+							<Bookmark />
+							<Share />
+						</Flex>
 					</Flex>
 				</Flex>
 			</Flex>

@@ -11,7 +11,7 @@ type ResponsiveColProps = {
 export default function ResponsiveCol(props: ResponsiveColProps) {
 	const isMoblie = useIsMobile();
 	return (
-		<Col span={isMoblie ? 1 : 2.7} className="border-r h-screen">
+		<Col span={isMoblie ? 1 : 2.7} className="h-1 sticky top-0">
 			{props.children}
 		</Col>
 	);

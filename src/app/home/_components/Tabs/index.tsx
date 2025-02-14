@@ -14,8 +14,13 @@ function Tabs({ children }: { children: React.ReactNode }) {
 			variant="unstyled"
 			value={activeTab}
 			onChange={setActiveTab}
+			className="border-r border-l"
 		>
-			<List justify="space-between" grow>
+			<List
+				justify="space-between"
+				grow
+				className="sticky top-0 z-1 bg-white opacity-95"
+			>
 				{TABS.map((tab) => {
 					const isCurrent = activeTab === tab.value;
 					return (

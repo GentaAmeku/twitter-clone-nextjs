@@ -11,19 +11,17 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<main>
-			<HeaderBox>
-				<Tabs>
-					<TabA>
-						<PostInput />
-						<PostList />
-					</TabA>
-					<TabB>
-						<PostInput />
-						<PostList />
-					</TabB>
-				</Tabs>
-			</HeaderBox>
-		</main>
+		<HeaderBox>
+			<Tabs>
+				<TabA>
+					<PostInput />
+					<PostList />
+				</TabA>
+				<TabB>
+					<PostInput />
+					<PostList />
+				</TabB>
+			</Tabs>
+		</HeaderBox>
 	);
 }
