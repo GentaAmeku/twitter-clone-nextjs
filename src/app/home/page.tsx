@@ -1,4 +1,3 @@
-import HeaderBox from "@/app/_components/HeaderBox";
 import Tabs, { TabA, TabB } from "@/app/home/_components/Tabs";
 import PostInput from "@/app/home/_containers/PostInput";
 import PostList from "@/app/home/_containers/PostList";
@@ -11,17 +10,15 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<HeaderBox>
-			<Tabs>
-				<TabA>
-					<PostInput />
-					<PostList />
-				</TabA>
-				<TabB>
-					<PostInput />
-					<PostList />
-				</TabB>
-			</Tabs>
-		</HeaderBox>
+		<Tabs>
+			<TabA>
+				<PostInput />
+				<PostList />
+			</TabA>
+			<TabB>
+				<PostInput />
+				<PostList />
+			</TabB>
+		</Tabs>
 	);
 }

@@ -49,7 +49,7 @@ export default function PostCard() {
 					<Text size="md" className="tracking-tight">
 						Next.js Conf starts in one hour. Join us live at 9:00 AM PT.
 					</Text>
-					<Flex gap={51} className="-ml-2 mt-1 w-full">
+					<Flex gap={52} className="-ml-2 mt-1 w-full">
 						<Reply />
 						<Repost />
 						<Like />

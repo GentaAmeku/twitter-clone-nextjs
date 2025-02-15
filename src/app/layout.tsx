@@ -20,10 +20,8 @@ export default function RootLayout({
 					<Container px={0} size={PAGE_SIZE}>
 						<Grid gutter={0} align="flex-start">
 							<Navigation />
-							<Col span="auto" className="h-screen">
-								{children}
-							</Col>
-							<Col span={3.7} className="hidden md:inline-block h-screen">
+							<Col span="auto">{children}</Col>
+							<Col span={3.7} className="sticky top-0 hidden md:inline-block">
 								<Aside />
 							</Col>
 						</Grid>
