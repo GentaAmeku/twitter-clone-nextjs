@@ -10,6 +10,7 @@ import {
 	Text,
 	Textarea,
 } from "@/app/_lib/mantine/core";
+import { colors } from "@/app/_styles/colors";
 import {
 	IconGif,
 	IconMoodSmile,
@@ -72,7 +73,7 @@ export default function PostInput() {
 									<IconMoodSmile size={20} />
 								</ActionIcon>
 							</Flex>
-							<Button radius="xl">
+							<Button radius="xl" color={colors.blue}>
 								<Text fw={500}>Post</Text>
 							</Button>
 						</Flex>

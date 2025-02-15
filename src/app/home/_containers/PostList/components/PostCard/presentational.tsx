@@ -19,7 +19,7 @@ export default function PostCard() {
 			p="sm"
 		>
 			<Flex>
-				<Avatar radius="sm" size={45} color="blue">
+				<Avatar radius="sm" size={45}>
 					<IconBrandNextjs size={30} color="gray" />
 				</Avatar>
 				<Flex direction="column" justify="center" className="ml-3" flex={1}>

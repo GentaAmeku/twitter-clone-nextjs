@@ -1,4 +1,5 @@
 import { Avatar, Button, Flex, Text } from "@/app/_lib/mantine/core";
+import { colors } from "@/app/_styles/colors";
 import { IconBrandNextjs } from "@tabler/icons-react";
 
 const FollowAnchor = () => (
@@ -9,7 +10,7 @@ const FollowAnchor = () => (
 		p="md"
 	>
 		<Flex flex={1} align="center">
-			<Avatar radius="sm" size={45} color="blue">
+			<Avatar radius="sm" size={45}>
 				<IconBrandNextjs size={30} color="gray" />
 			</Avatar>
 			<Flex
@@ -24,7 +25,7 @@ const FollowAnchor = () => (
 				<Text size="md">@Next.js</Text>
 			</Flex>
 		</Flex>
-		<Button color="blue" size="sm" radius="xl">
+		<Button color={colors.blue} size="sm" radius="xl">
 			Follow
 		</Button>
 	</Flex>
