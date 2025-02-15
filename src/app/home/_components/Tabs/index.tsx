@@ -14,7 +14,7 @@ function Tabs({ children }: { children: React.ReactNode }) {
 			variant="unstyled"
 			value={activeTab}
 			onChange={setActiveTab}
-			className="border-r border-l"
+			className="border-r border-l min-h-screen"
 		>
 			<List
 				justify="space-between"

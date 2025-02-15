@@ -15,7 +15,7 @@ import Repost from "./containers/Repost";
 export default function PostCard() {
 	return (
 		<Box
-			className="w-full cursor-pointer hover:bg-gray-100 transition-colors"
+			className="w-full cursor-pointer hover:bg-gray-100 transition-colors border-b"
 			p="sm"
 		>
 			<Flex>

@@ -11,7 +11,7 @@ type ResponsiveColProps = {
 export default function ResponsiveCol(props: ResponsiveColProps) {
 	const isMoblie = useIsMobile();
 	return (
-		<Col span={isMoblie ? 1 : 2.7} className="sticky top-0">
+		<Col span={isMoblie ? 1 : 2.7} className="sticky top-0 self-start">
 			{props.children}
 		</Col>
 	);

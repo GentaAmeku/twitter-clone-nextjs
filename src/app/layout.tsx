@@ -18,10 +18,13 @@ export default function RootLayout({
 			<body>
 				<AppProvider>
 					<Container px={0} size={PAGE_SIZE}>
-						<Grid gutter={0} align="flex-start">
+						<Grid gutter={0}>
 							<Navigation />
 							<Col span="auto">{children}</Col>
-							<Col span={3.7} className="sticky top-0 hidden md:inline-block">
+							<Col
+								span={3.7}
+								className="sticky top-0 self-start hidden md:inline-block"
+							>
 								<Aside />
 							</Col>
 						</Grid>
