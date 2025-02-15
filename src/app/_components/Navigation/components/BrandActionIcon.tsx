@@ -6,10 +6,9 @@ const BrandActionIcon = () => (
 	<ActionIcon
 		variant="subtle"
 		color="gray"
-		size={52}
+		size={60}
 		radius="xl"
 		aria-label="BrandIcon"
-		ml={3}
 	>
 		<IconBrandX size={36} color={colors.blue} />
 	</ActionIcon>

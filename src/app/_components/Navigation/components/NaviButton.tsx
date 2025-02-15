@@ -1,22 +1,33 @@
-import { Button } from "@/app/_lib/mantine/core";
-import type { ReactNode } from "react";
+"use client";
+
+import { useIsXl } from "@/app/_lib/hooks";
+import { ActionIcon, Button } from "@/app/_lib/mantine/core";
 
 type NaviButtonProps = {
-	icon: ReactNode;
-	children: ReactNode | string;
+	icon: React.ReactNode;
+	children: React.ReactNode | string;
 };
 
-const NaviButton = ({ icon, children }: NaviButtonProps) => (
-	<Button
-		leftSection={icon}
-		color="black"
-		size="xl"
-		radius="xl"
-		variant="subtle"
-		className="active:!transform-none hover:!bg-gray-200 transition-colors"
-	>
-		{children}
-	</Button>
-);
+const NaviButton = ({ icon, children }: NaviButtonProps) => {
+	const isXl = useIsXl();
+	if (isXl)
+		return (
+			<ActionIcon color="black" radius="xl" variant="subtle" size={60}>
+				{icon}
+			</ActionIcon>
+		);
+	return (
+		<Button
+			leftSection={icon}
+			color="black"
+			size="xl"
+			radius="xl"
+			variant="subtle"
+			className="active:!transform-none hover:!bg-gray-200 transition-colors"
+		>
+			{children}
+		</Button>
+	);
+};
 
 export default NaviButton;

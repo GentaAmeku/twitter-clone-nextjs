@@ -1,4 +1,4 @@
-import { Box, Flex, Space, Stack } from "@/app/_lib/mantine/core";
+import { Col, Flex, Space } from "@/app/_lib/mantine/core";
 import {
 	IconBell,
 	IconDotsCircleHorizontal,
@@ -11,42 +11,50 @@ import HeaderBox from "../HeaderBox";
 import BrandActionIcon from "./components/BrandActionIcon";
 import NaviButton from "./components/NaviButton";
 import PostButton from "./components/PostButton";
-import ResponsiveCol from "./components/ResponsiveCol";
+import ResponsiveStack from "./components/ResponsiveStack";
 import ProfileButton from "./containers/ProfileButton";
 
 export default function Navigation() {
 	return (
-		<ResponsiveCol>
+		<Col
+			span="content"
+			className="sticky top-0 self-start hidden md:inline-block"
+		>
 			<nav>
 				<Flex direction="column" justify="space-between" h="100vh">
-					<Box>
+					<div>
 						<HeaderBox>
-							<Flex mih="100%" justify="flex-start" align="center" px="sm">
+							<Flex
+								mih="100%"
+								justify="flex-start"
+								align="center"
+								className="px-2"
+							>
 								<BrandActionIcon />
 							</Flex>
 						</HeaderBox>
-						<Stack align="flex-start" justify="center" gap="sm">
-							<NaviButton icon={<IconHome size={24} />}>Home</NaviButton>
-							<NaviButton icon={<IconSearch size={24} />}>Explore</NaviButton>
-							<NaviButton icon={<IconBell size={24} />}>
+						<ResponsiveStack>
+							<NaviButton icon={<IconHome size={28} />}>Home</NaviButton>
+							<NaviButton icon={<IconSearch size={28} />}>Explore</NaviButton>
+							<NaviButton icon={<IconBell size={28} />}>
 								Notifications
 							</NaviButton>
-							<NaviButton icon={<IconMail size={24} />}>Messages</NaviButton>
-							<NaviButton icon={<IconUser size={24} />}>Profile</NaviButton>
-							<NaviButton icon={<IconDotsCircleHorizontal size={24} />}>
+							<NaviButton icon={<IconMail size={28} />}>Messages</NaviButton>
+							<NaviButton icon={<IconUser size={28} />}>Profile</NaviButton>
+							<NaviButton icon={<IconDotsCircleHorizontal size={28} />}>
 								More
 							</NaviButton>
-						</Stack>
+						</ResponsiveStack>
 						<Space h="xl" />
-						<Box className="pl-5 pr-9">
+						<Flex justify="center" className="w-full">
 							<PostButton />
-						</Box>
-					</Box>
-					<Box className="px-5 py-5">
+						</Flex>
+					</div>
+					<Flex justify="center">
 						<ProfileButton />
-					</Box>
+					</Flex>
 				</Flex>
 			</nav>
-		</ResponsiveCol>
+		</Col>
 	);
 }

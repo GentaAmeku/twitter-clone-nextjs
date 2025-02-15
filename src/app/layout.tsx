@@ -7,6 +7,7 @@ import { PAGE_SIZE } from "@/app/_styles/layout";
 
 import "./globals.css";
 import "@mantine/core/styles.css";
+import ResponsiveMainCol from "./_components/ResponsiveMainCol";
 
 export default function RootLayout({
 	children,
@@ -18,12 +19,12 @@ export default function RootLayout({
 			<body>
 				<AppProvider>
 					<Container px={0} size={PAGE_SIZE}>
-						<Grid gutter={0}>
+						<Grid gutter={0} justify="center">
 							<Navigation />
-							<Col span="auto">{children}</Col>
+							<ResponsiveMainCol>{children}</ResponsiveMainCol>
 							<Col
-								span={3.7}
-								className="sticky top-0 self-start hidden md:inline-block"
+								span={3.4}
+								className="sticky top-0 self-start hidden lg:inline-block"
 							>
 								<Aside />
 							</Col>

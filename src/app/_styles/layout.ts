@@ -1,5 +1,6 @@
 export const PAGE_SIZE = 1280; // xl
 // export const HEADER_HEIGHT = 64;
+export const SIDEBAR_WIDTH = 276;
 
 // tailwindcss breakpoints
 const sm = 640; // 40rem
