@@ -14,7 +14,7 @@ const PostButton = () => {
 			</ActionIcon>
 		);
 	return (
-		<div className="px-5 w-full">
+		<div className="px-5 -ml-5 w-full">
 			<Button
 				fullWidth
 				color={colors.blue}
