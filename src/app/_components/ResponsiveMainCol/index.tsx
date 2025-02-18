@@ -2,6 +2,7 @@
 
 import { useIsMd } from "@/app/_lib/hooks";
 import { Col } from "@/app/_lib/mantine/core";
+import { cn } from "@/app/_lib/utils";
 
 type ResponsiveStackProps = {
 	children: React.ReactNode;
@@ -9,9 +10,11 @@ type ResponsiveStackProps = {
 
 export default function ResponsiveMainCol(props: ResponsiveStackProps) {
 	const isMd = useIsMd();
-	if (isMd) return <Col span={12}>{props.children}</Col>;
 	return (
-		<Col span="content" className="min-w-[600px]">
+		<Col
+			span={!isMd ? "content" : 12}
+			className={cn({ "min-w-[600px]": !isMd })}
+		>
 			{props.children}
 		</Col>
 	);

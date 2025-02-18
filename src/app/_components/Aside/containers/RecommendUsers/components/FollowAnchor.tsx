@@ -1,5 +1,4 @@
 import { Avatar, Button, Flex, Text } from "@/app/_lib/mantine/core";
-import { colors } from "@/app/_styles/colors";
 import { IconBrandNextjs } from "@tabler/icons-react";
 
 const FollowAnchor = () => (
@@ -25,7 +24,7 @@ const FollowAnchor = () => (
 				<Text size="md">@Next.js</Text>
 			</Flex>
 		</Flex>
-		<Button color={colors.blue} size="sm" radius="xl">
+		<Button color="var(--color-twitter)" size="sm" radius="xl">
 			Follow
 		</Button>
 	</Flex>

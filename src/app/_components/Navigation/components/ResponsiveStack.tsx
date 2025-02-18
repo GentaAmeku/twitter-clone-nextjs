@@ -9,14 +9,8 @@ type ResponsiveStackProps = {
 
 export default function ResponsiveStack(props: ResponsiveStackProps) {
 	const isXl = useIsXl();
-	if (isXl)
-		return (
-			<Stack align="center" gap="sm">
-				{props.children}
-			</Stack>
-		);
 	return (
-		<Stack align="flex-start" gap="sm">
+		<Stack align={!isXl ? "flex-start" : "center"} gap="sm">
 			{props.children}
 		</Stack>
 	);

@@ -1,6 +1,6 @@
-import Tabs, { TabA, TabB } from "@/app/home/_components/Tabs";
-import PostInput from "@/app/home/_containers/PostInput";
-import PostList from "@/app/home/_containers/PostList";
+import Tabs, { TabA, TabB } from "@/app/(3col)/home/_components/Tabs";
+import PostInput from "@/app/(3col)/home/_containers/PostInput";
+import PostList from "@/app/(3col)/home/_containers/PostList";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

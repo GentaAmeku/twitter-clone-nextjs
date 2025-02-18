@@ -3,7 +3,6 @@ import {
 	ActionIcon as MantineActionIcon,
 	Text,
 } from "@/app/_lib/mantine/core";
-import { colors } from "@/app/_styles/colors";
 
 type ActionIconProps = {
 	icon: React.ReactNode;
@@ -22,7 +21,7 @@ export default function ActionIcon({ icon, children }: ActionIconProps) {
 				{icon}
 			</MantineActionIcon>
 			{children && (
-				<Text size="sm" c={colors.gray}>
+				<Text size="sm" c="var(--color-gray-600)">
 					{children}
 				</Text>
 			)}

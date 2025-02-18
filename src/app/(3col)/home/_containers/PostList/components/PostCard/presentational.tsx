@@ -1,5 +1,4 @@
 import { ActionIcon, Avatar, Box, Flex, Text } from "@/app/_lib/mantine/core";
-import { colors } from "@/app/_styles/colors";
 import {
 	IconBrandNextjs,
 	IconDots,
@@ -29,9 +28,16 @@ export default function PostCard() {
 								Next.js
 							</Text>
 							<div>
-								<IconRosetteDiscountCheckFilled color={colors.blue} size={18} />
+								<IconRosetteDiscountCheckFilled
+									color="var(--color-twitter)"
+									size={18}
+								/>
 							</div>
-							<Text size="md" c={colors.gray} className="tracking-tight">
+							<Text
+								size="md"
+								c="var(--color-gray-600)"
+								className="tracking-tight"
+							>
 								@nextjs · Oct 25,2024
 							</Text>
 						</Flex>
