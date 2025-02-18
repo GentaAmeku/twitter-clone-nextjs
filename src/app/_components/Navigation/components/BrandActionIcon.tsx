@@ -1,6 +1,5 @@
 import { ActionIcon } from "@/app/_lib/mantine/core";
-import { colors } from "@/app/_styles/colors";
-import { IconBrandX } from "@tabler/icons-react";
+import { IconBrandTwitterFilled } from "@tabler/icons-react";
 
 const BrandActionIcon = () => (
 	<ActionIcon
@@ -10,7 +9,7 @@ const BrandActionIcon = () => (
 		radius="xl"
 		aria-label="BrandIcon"
 	>
-		<IconBrandX size={36} color={colors.blue} />
+		<IconBrandTwitterFilled size={36} color="var(--color-twitter)" />
 	</ActionIcon>
 );
 
