@@ -1,6 +1,6 @@
 "use client";
 
-import MyAvatar from "@/app/_components/MyAvatar";
+import MyAvatar from "@/app/(3col)/_components/MyAvatar";
 import {
 	ActionIcon,
 	Box,

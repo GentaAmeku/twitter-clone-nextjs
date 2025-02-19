@@ -1,8 +1,8 @@
-import Aside from "@/app/_components/Aside";
-import Navigation from "@/app/_components/Navigation";
+import Aside from "@/app/(3col)/_components/Aside";
+import Navigation from "@/app/(3col)/_components/Navigation";
 import { Col, Container, Grid } from "@/app/_lib/mantine/core";
 import { PAGE_SIZE } from "@/app/_styles/layout";
-import ResponsiveMainCol from "../_components/ResponsiveMainCol";
+import ResponsiveMainCol from "./_components/ResponsiveMainCol";
 
 export default function RootLayout({
 	children,

@@ -1,4 +1,4 @@
-import HeaderBox from "@/app/_components/HeaderBox";
+import HeaderBox from "@/app/(3col)/_components/HeaderBox";
 import { Flex, Space, Stack } from "@/app/_lib/mantine/core";
 import Dev from "./components/Dev";
 import RecommendUsers from "./containers/RecommendUsers";

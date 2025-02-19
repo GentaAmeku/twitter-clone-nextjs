@@ -1,5 +1,5 @@
-import ShowMore from "@/app/_components/Aside/components/ShowMore";
-import Section from "@/app/_components/Section";
+import ShowMore from "@/app/(3col)/_components/Aside/components/ShowMore";
+import Section from "@/app/(3col)/_components/Section";
 import { Stack } from "@/app/_lib/mantine/core";
 import FollowAnchor from "./components/FollowAnchor";
 
