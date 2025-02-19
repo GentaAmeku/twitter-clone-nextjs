@@ -32,7 +32,7 @@ export default function RightSide() {
 						<IconBrandTwitterFilled size={40} color="var(--color-twitter)" />
 					</Avatar>
 				</AvatarGroup>
-				<Space h="md" />
+				<Space h="xl" />
 				<Text c="white" size="xl" fw={600}>
 					X (Twitter) Clone
 				</Text>
