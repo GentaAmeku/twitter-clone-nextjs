@@ -12,8 +12,6 @@ export async function middleware(request: NextRequest) {
 
 	if (!user) return NextResponse.redirect(new URL("/login", request.url));
 
-	if (path === "/") return NextResponse.redirect(new URL("/home", request.url));
-
 	return response;
 }
 

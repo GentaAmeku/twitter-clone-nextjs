@@ -1,9 +1,9 @@
 import { Card, Container, Flex } from "@/app/_lib/mantine/core";
 import type { Metadata } from "next";
-import { cn } from "../_lib/utils";
-import { PAGE_SIZE } from "../_styles/layout";
 import LeftSide from "./_components/LeftSide.tsx";
 import RightSide from "./_components/RightSide";
+import { cn } from "./_lib/utils";
+import { PAGE_SIZE } from "./_styles/layout";
 
 export const metadata: Metadata = {
 	title: "Login / X-clone",
