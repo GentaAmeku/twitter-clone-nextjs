@@ -1,14 +1,14 @@
 "use server";
 
-import type { User } from "@/lib/msw/handlers/types";
+import type { User } from "@/app/_types";
 import LoginForm from "./presentational";
 
 export default async function LoginFormContainer() {
-	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/user/16c27134-33e2-2325-0847-e2d51b20cabb`,
-	);
+  const res = await fetch(
+    `${process.env.API_SERVER_URL}/api/users/00000000-0000-0000-0000-000000000000`
+  );
 
-	const debugUser = (await res.json()) as User;
+  const debugUser = (await res.json()) as User;
 
-	return <LoginForm guest={debugUser} />;
+  return <LoginForm guest={debugUser} />;
 }

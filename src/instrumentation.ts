@@ -1,6 +1,6 @@
 export async function register() {
-	if (process.env.NEXT_RUNTIME === "nodejs") {
-		const { initMocks } = await import("./lib/msw/inedx");
-		initMocks();
-	}
+  // if (process.env.NEXT_RUNTIME === "nodejs") {
+  //   const { initMocks } = await import("./lib/msw/inedx");
+  //   initMocks();
+  // }
 }

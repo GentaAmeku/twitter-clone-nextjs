@@ -14,10 +14,12 @@ export type User = {
 export type Post = {
 	id: string;
 	text: string;
-	reply: number;
-	repost: number;
-	hearts: number;
-	views: number;
+	reply: string;
+	repost: string;
+	hearts: string;
+	views: string;
 	time: Dayjs;
+	fromNow: string;
 	user_id: string;
+	user?: User;
 };
