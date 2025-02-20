@@ -1,5 +1,3 @@
-<br />
-
 ![](/.github/assets/presentation.png)
 
 <p align="center">
@@ -44,7 +42,7 @@ Here are the steps to run the project locally.
 1. Run the project
 
     ```bash
-    npm run dev
+    pnpm run dev
     ```
 
 ## Optional
