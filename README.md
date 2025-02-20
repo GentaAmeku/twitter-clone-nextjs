@@ -17,7 +17,7 @@ comming soon
 - Mock data is returned by the Route Handler
 - Fom uses Conform to perform Server Action
 
-## Tech 🛠
+## Tech
 
 - [Next.js](https://nextjs.org)
 - [TypeScript](https://www.typescriptlang.org)
@@ -25,7 +25,7 @@ comming soon
 - [Mantine](https://mantine.dev/)
 - [Conform](https://conform.guide/)
 
-## Development 💻
+## Development
 
 Here are the steps to run the project locally.
 
