@@ -48,3 +48,4 @@ Here are the steps to run the project locally.
 ## Optional
 - Created for learning Next.js
 - MSW is not yet available
+- Still in development
