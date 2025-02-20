@@ -23,6 +23,7 @@ export default function PostList({
 	const [next, setNext] = useState<boolean>(true);
 	const [ref, inView] = useInView();
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies:
 	useEffect(() => {
 		if (inView) {
 			const loadMorePost = async () => {
