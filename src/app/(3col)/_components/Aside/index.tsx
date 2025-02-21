@@ -1,9 +1,9 @@
 import HeaderBox from "@/app/(3col)/_components/HeaderBox";
 import { Flex, Space, Stack } from "@/app/_lib/mantine/core";
 import Dev from "./components/Dev";
-import RecommendUsers from "./containers/RecommendUsers";
-import Search from "./containers/Search";
-import TrendList from "./containers/TrendList";
+import RecommendUsers from "./components/RecommendUsers";
+import Search from "./components/Search";
+import TrendList from "./components/TrendList";
 
 export default function Aside() {
 	return (

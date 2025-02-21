@@ -5,9 +5,5 @@ type MyavatarProps = {
 };
 
 export default function MyAvatar({ size = 45 }: MyavatarProps) {
-	return (
-		<Avatar color="cyan" size={size} src="/images/avatar.jpg">
-			AG
-		</Avatar>
-	);
+	return <Avatar color="cyan" size={size} src="/images/avatar.jpg" />;
 }
