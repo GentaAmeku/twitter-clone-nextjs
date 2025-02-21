@@ -1,6 +1,6 @@
 "use server";
 
-import type { Post } from "@/app/_types";
+import type { PostWithUser } from "@/app/_types";
 import PostList from "./presentational";
 
 const INITIAL_NUMBER_OF_USERS = 10;
@@ -10,7 +10,10 @@ export default async function PostListContainer() {
     `${process.env.API_SERVER_URL}/api/posts?${new URLSearchParams({
       limit: INITIAL_NUMBER_OF_USERS.toString(),
     })}`,
-  ).then((res) => res.json())) as Post[];
+  ).then((res) => res.json())) as PostWithUser[];
+
+  // debug
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <PostList

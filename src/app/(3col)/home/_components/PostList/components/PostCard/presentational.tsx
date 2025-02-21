@@ -1,7 +1,7 @@
 "use client";
 
 import { ActionIcon, Avatar, Box, Flex, Text } from "@/app/_lib/mantine/core";
-import type { Post } from "@/app/_types";
+import type { PostWithUser } from "@/app/_types";
 import { IconDots, IconRosetteDiscountCheckFilled } from "@tabler/icons-react";
 import Bookmark from "./components/Bookmark";
 import Like from "./components/Like";
@@ -11,7 +11,7 @@ import Share from "./components/Share";
 import Views from "./components/Views";
 
 type PostCardProps = {
-  post: Post;
+  post: PostWithUser;
 };
 
 export default function PostCard({ post }: PostCardProps) {

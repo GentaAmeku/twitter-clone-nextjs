@@ -2,6 +2,8 @@ import PostInput from "@/app/(3col)/home/_components//PostInput";
 import PostList from "@/app/(3col)/home/_components/PostList";
 import Tabs, { TabA, TabB } from "@/app/(3col)/home/_components/Tabs";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import Loader from "../_components/Loader";
 
 export const metadata: Metadata = {
   title: "Home / twitter-clone",
@@ -13,11 +15,15 @@ export default function Home() {
     <Tabs>
       <TabA>
         <PostInput />
-        <PostList />
+        <Suspense fallback={<Loader />}>
+          <PostList />
+        </Suspense>
       </TabA>
       <TabB>
         <PostInput />
-        <PostList />
+        <Suspense fallback={<Loader />}>
+          <PostList />
+        </Suspense>
       </TabB>
     </Tabs>
   );

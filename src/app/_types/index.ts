@@ -7,8 +7,8 @@ export type User = {
   created_at?: Date;
   email: string;
   password: string;
-  following: [] | never[];
-  followers: [] | never[];
+  following: User[] | never[];
+  followers: User[] | never[];
 };
 
 export type Post = {
@@ -21,6 +21,9 @@ export type Post = {
   time: Dayjs;
   fromNow: string;
   user_id: string;
+};
+
+export type PostWithUser = Post & {
   user?: User;
 };
 

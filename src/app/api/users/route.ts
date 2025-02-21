@@ -1,13 +1,14 @@
 import type { NextRequest } from "next/server";
-import { users } from "./_db";
+import { usersDb } from "../_db";
 
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const offset = Number(searchParams.get("offset") || 0);
   const limit = Number(searchParams.get("limit") || 10);
-
   const email = searchParams.get("email") as string;
   const password = searchParams.get("password") as string;
+
+  const users = usersDb.getAll();
 
   if (email || password) {
     const user = users.find((user) => {

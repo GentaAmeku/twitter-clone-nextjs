@@ -1,5 +1,6 @@
 import { getRandomInt } from "@/app/_lib/utils";
-import type { Post, Trend } from "@/app/_types";
+import type { Trend } from "@/app/_types";
+import { createDatabase } from "../createDatabase";
 
 const generateTrend = (name: string): Trend => {
   return {
@@ -14,7 +15,7 @@ const sortByVolume = (trends: Trend[]): Trend[] => {
   return trends.sort((a, b) => b.volume - a.volume);
 };
 
-export const trends: readonly Trend[] = Object.freeze(
+export default createDatabase<Trend>(
   sortByVolume([
     generateTrend("@conform-to/react"),
     generateTrend("@conform-to/zod"),

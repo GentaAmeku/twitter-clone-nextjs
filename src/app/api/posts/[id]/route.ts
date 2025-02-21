@@ -1,4 +1,4 @@
-import { posts } from "../_db";
+import { postsDb } from "../../_db";
 
 export async function GET(
   request: Request,
@@ -9,7 +9,7 @@ export async function GET(
     if (!id) {
       return new Response(null, { status: 404 });
     }
-    const post = posts.find((post) => post.id === id);
+    const post = postsDb.get((post) => post.id === id);
     return Response.json(post);
   } catch (error) {
     if (error instanceof Error) {

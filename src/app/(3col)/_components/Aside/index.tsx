@@ -1,7 +1,7 @@
 import HeaderBox from "@/app/(3col)/_components/HeaderBox";
 import { Flex, Space, Stack } from "@/app/_lib/mantine/core";
 import Dev from "./components/Dev";
-import RecommendUsers from "./components/RecommendUsers";
+import RecommendedUsers from "./components/RecommendedUsers";
 import Search from "./components/Search";
 import TrendList from "./components/TrendList";
 
@@ -16,7 +16,7 @@ export default function Aside() {
       <Space h="sm" />
       <Stack align="flex-start" justify="center" gap="lg">
         <TrendList />
-        <RecommendUsers />
+        <RecommendedUsers />
         <Dev />
       </Stack>
     </aside>

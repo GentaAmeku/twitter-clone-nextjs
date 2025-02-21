@@ -1,4 +1,4 @@
-import { users } from "../_db";
+import { usersDb } from "../../_db";
 
 export async function GET(
   request: Request,
@@ -9,7 +9,7 @@ export async function GET(
     if (!id) {
       return new Response(null, { status: 404 });
     }
-    const user = users.find((user) => user.id === id);
+    const user = usersDb.get((user) => user.id === id);
     return Response.json(user);
   } catch (error) {
     if (error instanceof Error) {
