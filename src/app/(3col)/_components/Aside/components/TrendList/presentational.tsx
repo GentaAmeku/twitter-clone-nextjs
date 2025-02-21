@@ -5,18 +5,18 @@ import ShowMore from "../../components/ShowMore";
 import TrendAnchor from "./components/TrendAnchor";
 
 type TrendListProps = {
-	trends: Trend[];
+  trends: Trend[];
 };
 
 export default function TrendList({ trends }: TrendListProps) {
-	return (
-		<Section title="What’s happening">
-			<Stack align="flex-start" justify="center" gap={0} px={0}>
-				{trends.map((trend) => (
-					<TrendAnchor key={trend.name} {...trend} />
-				))}
-			</Stack>
-			<ShowMore />
-		</Section>
-	);
+  return (
+    <Section title="What’s happening">
+      <Stack align="flex-start" justify="center" gap={0} px={0}>
+        {trends.map((trend) => (
+          <TrendAnchor key={trend.name} {...trend} />
+        ))}
+      </Stack>
+      <ShowMore />
+    </Section>
+  );
 }

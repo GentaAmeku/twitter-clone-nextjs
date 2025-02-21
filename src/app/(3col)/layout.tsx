@@ -5,22 +5,22 @@ import { PAGE_SIZE } from "@/app/_styles/layout";
 import ResponsiveMainCol from "./_components/ResponsiveMainCol";
 
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return (
-		<Container px={0} size={PAGE_SIZE}>
-			<Grid gutter={0} justify="center">
-				<Navigation />
-				<ResponsiveMainCol>{children}</ResponsiveMainCol>
-				<Col
-					span={3.4}
-					className="sticky top-0 self-start hidden lg:inline-block"
-				>
-					<Aside />
-				</Col>
-			</Grid>
-		</Container>
-	);
+  return (
+    <Container px={0} size={PAGE_SIZE}>
+      <Grid gutter={0} justify="center">
+        <Navigation />
+        <ResponsiveMainCol>{children}</ResponsiveMainCol>
+        <Col
+          span={3.4}
+          className="sticky top-0 self-start hidden lg:inline-block"
+        >
+          <Aside />
+        </Col>
+      </Grid>
+    </Container>
+  );
 }

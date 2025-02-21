@@ -5,18 +5,18 @@ import type { User } from "@/app/_types";
 import FollowAnchor from "./components/FollowAnchor";
 
 type RecommendUsersProps = {
-	users: User[];
+  users: User[];
 };
 
 export default function RecommendUsers({ users }: RecommendUsersProps) {
-	return (
-		<Section title="Who to follow">
-			<Stack align="flex-start" justify="center" gap={0} px={0}>
-				{users.map((user) => (
-					<FollowAnchor key={user.name} {...user} />
-				))}
-			</Stack>
-			<ShowMore />
-		</Section>
-	);
+  return (
+    <Section title="Who to follow">
+      <Stack align="flex-start" justify="center" gap={0} px={0}>
+        {users.map((user) => (
+          <FollowAnchor key={user.name} {...user} />
+        ))}
+      </Stack>
+      <ShowMore />
+    </Section>
+  );
 }

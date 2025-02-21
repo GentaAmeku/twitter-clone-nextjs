@@ -5,13 +5,13 @@ import { Provider as JotaiProvider } from "jotai";
 import { MantineProvider, createTheme } from "@/app/_lib/mantine/core";
 
 const theme = createTheme({
-	/** Put your mantine theme override here */
+  /** Put your mantine theme override here */
 });
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-	return (
-		<MantineProvider theme={theme}>
-			<JotaiProvider>{children}</JotaiProvider>
-		</MantineProvider>
-	);
+  return (
+    <MantineProvider theme={theme}>
+      <JotaiProvider>{children}</JotaiProvider>
+    </MantineProvider>
+  );
 }
