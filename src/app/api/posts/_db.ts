@@ -1,38 +1,32 @@
+import { getRandomInt } from "@/app/_lib/utils";
 import type { Post } from "@/app/_types";
 import dayjs from "dayjs";
-import ja from "dayjs/locale/ja";
+import en from "dayjs/locale/en";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { v4 as uuidv4 } from "uuid";
+import { trends } from "../trends/_db";
 import { generateLoginUser, mockUsers, users } from "../users/_db";
 
 dayjs.extend(relativeTime);
-dayjs.locale(ja);
+dayjs.locale(en);
 const now = dayjs();
-
-const formatNumber = (num: number): string => {
-	if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
-	if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
-	return num.toString();
-};
-
-const getRandomInt = (max: number) => Math.floor(Math.random() * max);
 
 const generateMockPosts = (): Post[] => {
 	return [
-		...Array(20)
+		...Array(100)
 			.keys()
 			.map((k) => {
 				const time = now.add(-getRandomInt(24 * 3), "h");
 				return {
 					id: uuidv4(),
-					text: "Random User Post",
-					reply: formatNumber(getRandomInt(10)),
-					repost: formatNumber(getRandomInt(50)),
-					hearts: formatNumber(getRandomInt(1000)),
-					views: formatNumber(getRandomInt(20000)),
+					text: trends[getRandomInt(trends.length)]?.name,
+					reply: getRandomInt(10),
+					repost: getRandomInt(50),
+					hearts: getRandomInt(1000),
+					views: getRandomInt(20000),
 					time,
 					fromNow: time.fromNow(),
-					user_id: mockUsers[k].user_id,
+					user_id: mockUsers[k]?.user_id,
 				};
 			}),
 	];
@@ -60,14 +54,14 @@ const generateLoginUserPosts = (): Post[] => {
 				const time = now.add(-getRandomInt(24 * 3), "h");
 				return {
 					id: uuidv4(),
-					text: "Login User Post",
-					reply: formatNumber(getRandomInt(20)),
-					repost: formatNumber(getRandomInt(100)),
-					hearts: formatNumber(getRandomInt(2000)),
-					views: formatNumber(getRandomInt(30000)),
+					text: trends[getRandomInt(trends.length)]?.name,
+					reply: getRandomInt(20),
+					repost: getRandomInt(100),
+					hearts: getRandomInt(2000),
+					views: getRandomInt(30000),
 					time,
 					fromNow: time.fromNow(),
-					user_id: generateLoginUser().user_id,
+					user_id: generateLoginUser()?.user_id,
 				};
 			}),
 	];

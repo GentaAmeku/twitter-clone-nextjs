@@ -11,8 +11,8 @@ import HeaderBox from "../HeaderBox";
 import BrandActionIcon from "./components/BrandActionIcon";
 import NaviButton from "./components/NaviButton";
 import PostButton from "./components/PostButton";
+import ProfileButton from "./components/ProfileButton";
 import ResponsiveStack from "./components/ResponsiveStack";
-import ProfileButton from "./containers/ProfileButton";
 
 export default function Navigation() {
 	return (
