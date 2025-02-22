@@ -1,9 +1,11 @@
 import { getRandomInt } from "@/app/_lib/utils";
 import type { Trend } from "@/app/_types";
+import { v4 as uuidv4 } from "uuid";
 import { createDatabase } from "../createDatabase";
 
 const generateTrend = (name: string): Trend => {
   return {
+    id: uuidv4(),
     name,
     query: name,
     group: "IT",

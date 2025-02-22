@@ -1,4 +1,4 @@
-import { postsDb } from "../../_db";
+import { postsDb } from "@/app/api/_db";
 
 export async function GET(
   request: Request,
