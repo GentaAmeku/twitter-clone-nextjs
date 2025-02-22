@@ -1,10 +1,11 @@
+import { LOGIN_USER_ID } from "@/app/_constants";
 import { getRandomInt } from "@/app/_lib/utils";
 import type { User } from "@/app/_types";
 import { generateUsername } from "unique-username-generator";
 import { v4 as uuidv4 } from "uuid";
 import { createDatabase } from "../createDatabase";
 
-const users = [
+const users: User[] = [
   ...Array(100 - 1)
     .keys()
     .map((k) => {
@@ -20,8 +21,6 @@ const users = [
       };
     }),
 ];
-
-export const LOGIN_USER_ID = "00000000-0000-0000-0000-000000000000";
 
 const generateLoginUser = (): User => {
   const NUMBER_OF_USER = 50;

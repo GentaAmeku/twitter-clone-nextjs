@@ -14,7 +14,7 @@ type PostListProps = {
 
 const PER_PAGE = 10;
 
-export default function PostList({
+export default function FollowersPostList({
   initialOffset,
   initialPosts,
 }: PostListProps) {

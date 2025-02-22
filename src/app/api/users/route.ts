@@ -1,5 +1,5 @@
+import { usersDb } from "@/app/api/_db";
 import type { NextRequest } from "next/server";
-import { usersDb } from "../_db";
 
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

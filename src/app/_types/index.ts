@@ -30,6 +30,7 @@ export type PostWithUser = Post & {
 export type Group = "IT";
 
 export type Trend = {
+  id: string;
   name: string;
   query: string;
   group: Group;
