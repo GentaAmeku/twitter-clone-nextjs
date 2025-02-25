@@ -1,8 +1,8 @@
 "use client";
 
 import MyAvatar from "@/app/(3col)/_components/MyAvatar";
-import { useIsXl } from "@/app/_lib/hooks";
-import { ActionIcon, Button, Flex, Text } from "@/app/_lib/mantine/core";
+import { useIsXl } from "@/lib/hooks";
+import { ActionIcon, Button, Flex, Text } from "@/lib/mantine/core";
 import { IconDots } from "@tabler/icons-react";
 
 const ProfileButton = () => {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useIsXl } from "@/app/_lib/hooks";
-import { Stack } from "@/app/_lib/mantine/core";
+import { useIsXl } from "@/lib/hooks";
+import { Stack } from "@/lib/mantine/core";
 
 type ResponsiveStackProps = {
   children: React.ReactNode;

@@ -1,6 +1,6 @@
-import { get } from "@/app/_lib/utils/fetcher";
-import type { Post, PostWithUser, User } from "@/app/_types";
 import { postsDb } from "@/app/api/_db";
+import { get } from "@/lib/utils/fetcher";
+import type { Post, PostWithUser, User } from "@/types";
 import dayjs from "dayjs";
 import type { NextRequest } from "next/server";
 import { v4 as uuidv4 } from "uuid";

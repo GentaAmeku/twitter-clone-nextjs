@@ -1,6 +1,6 @@
-import { Flex, Text } from "@/app/_lib/mantine/core";
-import { formatNumber } from "@/app/_lib/utils";
-import type { Trend } from "@/app/_types";
+import { Flex, Text } from "@/lib/mantine/core";
+import { formatNumber } from "@/lib/utils";
+import type { Trend } from "@/types";
 import { IconDots } from "@tabler/icons-react";
 
 type TrendAnchorProps = Trend;

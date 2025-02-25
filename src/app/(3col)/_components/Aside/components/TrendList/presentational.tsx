@@ -1,6 +1,6 @@
 import Section from "@/app/(3col)/_components/Section";
-import { Stack } from "@/app/_lib/mantine/core";
-import type { Trend } from "@/app/_types";
+import { Stack } from "@/lib/mantine/core";
+import type { Trend } from "@/types";
 import ShowMore from "../../components/ShowMore";
 import TrendAnchor from "./components/TrendAnchor";
 

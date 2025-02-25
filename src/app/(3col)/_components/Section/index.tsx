@@ -1,4 +1,4 @@
-import { Space } from "@/app/_lib/mantine/core";
+import { Space } from "@/lib/mantine/core";
 
 type SectionProps = { title: string; children: React.ReactNode };
 

@@ -1,4 +1,4 @@
-import { Col, Flex, Space } from "@/app/_lib/mantine/core";
+import { Col, Flex, Space } from "@/lib/mantine/core";
 import {
   IconBell,
   IconDotsCircleHorizontal,

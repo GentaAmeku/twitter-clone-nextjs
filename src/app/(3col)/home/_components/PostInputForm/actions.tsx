@@ -1,6 +1,6 @@
 "use server";
 
-import { post as fetchPost } from "@/app/_lib/utils/fetcher";
+import { post as fetchPost } from "@/lib/utils/fetcher";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidatePath } from "next/cache";
 import { postSchema } from "./schema";

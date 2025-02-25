@@ -1,7 +1,7 @@
 "use server";
 
-import { get } from "@/app/_lib/utils/fetcher";
 import type { GetPostResponse } from "@/app/api/posts/route";
+import { get } from "@/lib/utils/fetcher";
 
 export const fetchPost = async (path: string) => {
   const queryString = path.split("?")[1] || ""; // クエリ部分を取得

@@ -1,4 +1,4 @@
-import { Box } from "@/app/_lib/mantine/core";
+import { Box } from "@/lib/mantine/core";
 import type { ReactNode } from "react";
 
 type HeaderBoxProps = {

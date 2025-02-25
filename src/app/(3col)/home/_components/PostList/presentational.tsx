@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader, Space } from "@/app/_lib/mantine/core";
+import { Loader, Space } from "@/lib/mantine/core";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import useSWRInfinite from "swr/infinite";

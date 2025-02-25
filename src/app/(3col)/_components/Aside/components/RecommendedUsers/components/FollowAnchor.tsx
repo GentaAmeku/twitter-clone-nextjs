@@ -1,5 +1,5 @@
-import { Avatar, Button, Flex, Text } from "@/app/_lib/mantine/core";
-import type { User } from "@/app/_types";
+import { Avatar, Button, Flex, Text } from "@/lib/mantine/core";
+import type { User } from "@/types";
 import { IconBrandNextjs } from "@tabler/icons-react";
 
 type FollowAnchorProps = User;

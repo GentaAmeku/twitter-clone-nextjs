@@ -1,4 +1,4 @@
-import { formatNumber } from "@/app/_lib/utils";
+import { formatNumber } from "@/lib/utils";
 import { IconHeart } from "@tabler/icons-react";
 import ActionIcon from "./ActionIcon";
 

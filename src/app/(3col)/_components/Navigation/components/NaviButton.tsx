@@ -1,7 +1,7 @@
 "use client";
 
-import { useIsXl } from "@/app/_lib/hooks";
-import { ActionIcon, Button } from "@/app/_lib/mantine/core";
+import { useIsXl } from "@/lib/hooks";
+import { ActionIcon, Button } from "@/lib/mantine/core";
 
 type NaviButtonProps = {
   icon: React.ReactNode;

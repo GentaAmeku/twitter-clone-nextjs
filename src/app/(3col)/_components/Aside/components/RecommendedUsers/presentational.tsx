@@ -1,7 +1,7 @@
 import ShowMore from "@/app/(3col)/_components/Aside/components/ShowMore";
 import Section from "@/app/(3col)/_components/Section";
-import { Stack } from "@/app/_lib/mantine/core";
-import type { User } from "@/app/_types";
+import { Stack } from "@/lib/mantine/core";
+import type { User } from "@/types";
 import FollowAnchor from "./components/FollowAnchor";
 
 type RecommendedUsersProps = {

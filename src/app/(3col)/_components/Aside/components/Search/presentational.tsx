@@ -1,4 +1,4 @@
-import { Input } from "@/app/_lib/mantine/core";
+import { Input } from "@/lib/mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 
 export default function Search() {

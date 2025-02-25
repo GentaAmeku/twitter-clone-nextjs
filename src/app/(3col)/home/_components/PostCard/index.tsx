@@ -1,7 +1,7 @@
 "use client";
 
-import { ActionIcon, Avatar, Box, Flex, Text } from "@/app/_lib/mantine/core";
-import type { PostWithUser } from "@/app/_types";
+import { ActionIcon, Avatar, Box, Flex, Text } from "@/lib/mantine/core";
+import type { PostWithUser } from "@/types";
 import { IconDots, IconRosetteDiscountCheckFilled } from "@tabler/icons-react";
 import Bookmark from "./components/Bookmark";
 import Like from "./components/Like";

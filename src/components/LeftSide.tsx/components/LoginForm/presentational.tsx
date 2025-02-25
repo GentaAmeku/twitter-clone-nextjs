@@ -9,8 +9,8 @@ import {
   Space,
   Stack,
   Text,
-} from "@/app/_lib/mantine/core";
-import type { User } from "@/app/_types";
+} from "@/lib/mantine/core";
+import type { User } from "@/types";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { IconArrowRight } from "@tabler/icons-react";

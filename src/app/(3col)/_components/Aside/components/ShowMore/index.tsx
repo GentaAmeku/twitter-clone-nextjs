@@ -1,4 +1,4 @@
-import { Flex, Text } from "@/app/_lib/mantine/core";
+import { Flex, Text } from "@/lib/mantine/core";
 
 export default function ShowMore() {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
-import { useIsMd } from "@/app/_lib/hooks";
-import { Col } from "@/app/_lib/mantine/core";
-import { cn } from "@/app/_lib/utils";
+import { useIsMd } from "@/lib/hooks";
+import { Col } from "@/lib/mantine/core";
+import { cn } from "@/lib/utils";
 
 type ResponsiveStackProps = {
   children: React.ReactNode;

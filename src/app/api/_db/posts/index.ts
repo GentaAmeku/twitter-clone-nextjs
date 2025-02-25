@@ -1,5 +1,5 @@
-import { getRandomInt } from "@/app/_lib/utils";
-import type { Post, PostWithUser, Trend, User } from "@/app/_types";
+import { getRandomInt } from "@/lib/utils";
+import type { Post, PostWithUser, Trend, User } from "@/types";
 import dayjs from "dayjs";
 import en from "dayjs/locale/en";
 import relativeTime from "dayjs/plugin/relativeTime";

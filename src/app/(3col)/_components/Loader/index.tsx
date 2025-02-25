@@ -1,4 +1,4 @@
-import { Loader as MantineLoader, Space } from "@/app/_lib/mantine/core";
+import { Loader as MantineLoader, Space } from "@/lib/mantine/core";
 
 type LoaderProps = {
   ref?: React.RefObject<HTMLDivElement>;

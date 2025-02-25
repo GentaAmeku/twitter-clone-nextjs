@@ -1,7 +1,7 @@
 "use server";
 
-import { get } from "@/app/_lib/utils/fetcher";
-import type { User } from "@/app/_types";
+import { get } from "@/lib/utils/fetcher";
+import type { User } from "@/types";
 import LoginForm from "./presentational";
 
 export default async function LoginFormContainer() {
