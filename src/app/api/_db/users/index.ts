@@ -38,4 +38,4 @@ const generateLoginUser = (): User => {
   };
 };
 
-export default createDatabase<User>([generateLoginUser(), ...users]);
+export default createDatabase<User>([...users, generateLoginUser()]);
