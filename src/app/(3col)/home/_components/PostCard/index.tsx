@@ -16,10 +16,7 @@ type PostCardProps = {
 
 export default function PostCard({ post }: PostCardProps) {
   return (
-    <Box
-      className="w-full cursor-pointer hover:bg-gray-100 transition-colors border-b"
-      p="sm"
-    >
+    <article className="w-full cursor-pointer hover:bg-gray-100 transition-colors border-b break-all p-4">
       <Flex>
         <Avatar
           radius="sm"
@@ -76,6 +73,6 @@ export default function PostCard({ post }: PostCardProps) {
           </Flex>
         </Flex>
       </Flex>
-    </Box>
+    </article>
   );
 }

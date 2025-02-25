@@ -13,7 +13,7 @@ export default function ResponsiveMainCol(props: ResponsiveStackProps) {
   return (
     <Col
       span={!isMd ? "content" : 12}
-      className={cn({ "min-w-[600px]": !isMd })}
+      className={cn({ "!min-w-[600px] !max-w-[600px]": !isMd })}
     >
       {props.children}
     </Col>
