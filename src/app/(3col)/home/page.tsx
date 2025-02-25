@@ -1,5 +1,5 @@
-import PostInput from "@/app/(3col)/home/_components//PostInput";
 import FollowersPostList from "@/app/(3col)/home/_components/FollowersPostList";
+import PostInputForm from "@/app/(3col)/home/_components/PostInputForm";
 import PostList from "@/app/(3col)/home/_components/PostList";
 import Tabs, { TabA, TabB } from "@/app/(3col)/home/_components/Tabs";
 import type { Metadata } from "next";
@@ -15,13 +15,11 @@ export default function Home() {
   return (
     <Tabs>
       <TabA>
-        <PostInput />
-        <Suspense fallback={<Loader />}>
-          <PostList />
-        </Suspense>
+        <PostInputForm />
+        <PostList />
       </TabA>
       <TabB>
-        <PostInput />
+        <PostInputForm />
         <Suspense fallback={<Loader />}>
           <FollowersPostList />
         </Suspense>

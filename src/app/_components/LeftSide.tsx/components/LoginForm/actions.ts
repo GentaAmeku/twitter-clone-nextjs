@@ -1,5 +1,6 @@
 "use server";
 
+import { get } from "@/app/_lib/utils/fetcher";
 import type { User } from "@/app/_types";
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
@@ -14,9 +15,7 @@ export async function login(prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
-  const users = (await fetch(`${process.env.API_SERVER_URL}/api/users`).then(
-    (res) => res.json(),
-  )) as User[];
+  const users = await get<User[]>({ url: "/api/users" });
 
   // debug
   await new Promise((resolve) => setTimeout(resolve, 2000));

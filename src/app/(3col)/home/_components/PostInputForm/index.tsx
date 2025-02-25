@@ -10,21 +10,53 @@ import {
   Text,
   Textarea,
 } from "@/app/_lib/mantine/core";
+import { getFormProps, getTextareaProps, useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
 import {
   IconGif,
   IconMoodSmile,
   IconPhoto,
   IconWorld,
 } from "@tabler/icons-react";
+import { useActionState, useEffect } from "react";
+import { useSWRConfig } from "swr";
+import { unstable_serialize } from "swr/infinite";
+import { post } from "./actions";
+import { postSchema } from "./schema";
 
-export default function PostInput() {
+export default function PostInputForm() {
+  const { mutate } = useSWRConfig();
+  const [lastResult, action, isPending] = useActionState(post, undefined);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: postSchema });
+    },
+    shouldValidate: "onSubmit",
+  });
+  const isDisabled: boolean = !fields.text.value;
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies:
+  useEffect(() => {
+    if (lastResult?.status === "success") {
+      mutate(
+        unstable_serialize(() => {
+          return "/api/posts?limit=10";
+        }),
+      );
+    }
+  }, [lastResult]);
+
   return (
-    <>
+    <form action={action} {...getFormProps(form)}>
       <Box px={20} pt={20}>
         <Flex align="flex-start">
           <MyAvatar size={40} />
           <Flex direction="column" className="ml-3 w-full">
             <Textarea
+              {...getTextareaProps(fields.text)}
+              defaultValue={""}
+              key={fields.text.key}
               variant="unstyled"
               size="lg"
               placeholder="What is happening?!"
@@ -72,7 +104,13 @@ export default function PostInput() {
                   <IconMoodSmile size={20} />
                 </ActionIcon>
               </Flex>
-              <Button radius="xl" color="var(--color-twitter)">
+              <Button
+                radius="xl"
+                color="var(--color-twitter)"
+                type="submit"
+                disabled={isDisabled || isPending}
+                loading={isPending}
+              >
                 <Text fw={500}>Post</Text>
               </Button>
             </Flex>
@@ -80,6 +118,6 @@ export default function PostInput() {
         </Flex>
       </Box>
       <Divider mt="sm" />
-    </>
+    </form>
   );
 }

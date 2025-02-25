@@ -1,49 +1,58 @@
 "use client";
 
 import { Loader, Space } from "@/app/_lib/mantine/core";
-import type { Post } from "@/app/_types";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import useSWRInfinite from "swr/infinite";
 import PostCard from "../PostCard";
 import { fetchPost } from "./action";
 
-type PostListProps = {
-  initialOffset: number;
-  initialPosts: Post[];
+import type { GetPostResponse } from "@/app/api/posts/route";
+import type { Variants } from "framer-motion";
+import { useEffect } from "react";
+
+const variants: Variants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.8 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
-const PER_PAGE = 10;
+const getKey = (pageIndex: number, previousPageData: GetPostResponse) => {
+  if (previousPageData && !previousPageData.hasNext) return null;
+  if (pageIndex === 0) return "/api/posts?limit=10";
+  return `/api/posts?cursor=${previousPageData.nextCursor}&limit=${10}`;
+};
 
-export default function PostList({
-  initialOffset,
-  initialPosts,
-}: PostListProps) {
-  const [posts, setPosts] = useState<Post[]>(initialPosts);
-  const [offset, setOffset] = useState<number>(initialOffset);
-  const [next, setNext] = useState<boolean>(true);
+export default function PostList() {
+  const { data, setSize, isLoading } = useSWRInfinite(getKey, fetchPost);
   const [ref, inView] = useInView();
+  const posts = data ? data.flatMap((page) => page.data) : [];
+  const hasNext = data?.at(-1)?.hasNext;
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
-    if (inView) {
-      const loadMorePost = async () => {
-        if (!next) return true;
-        const { data, next: apiNext } = await fetchPost(offset, PER_PAGE);
-        if (posts.length === 0) return true;
-        setPosts((posts) => [...posts, ...data]);
-        setOffset((offset) => offset + PER_PAGE);
-        setNext(apiNext);
-      };
-      loadMorePost();
+    if (inView && hasNext && !isLoading) {
+      setSize((prev) => prev + 1);
     }
-  }, [inView]);
+  }, [inView, hasNext, isLoading, setSize]);
+
+  if (!data)
+    return (
+      <div className="text-center w-full">
+        <Space h="md" />
+        <Loader />
+      </div>
+    );
 
   return (
     <div>
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-      {next && (
+      <AnimatePresence mode="popLayout">
+        {posts.map((post) => (
+          <motion.article key={post.id} {...variants} layout="position">
+            <PostCard post={post} />
+          </motion.article>
+        ))}
+      </AnimatePresence>
+      {hasNext && (
         <div className="text-center w-full" ref={ref}>
           <Space h="md" />
           <Loader />

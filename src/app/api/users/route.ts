@@ -4,7 +4,8 @@ import type { NextRequest } from "next/server";
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const offset = Number(searchParams.get("offset") || 0);
-  const limit = Number(searchParams.get("limit") || 10);
+  const limitParam = searchParams.get("limit");
+  const limit = limitParam ? Math.min(Number(limitParam), 100) : undefined;
   const email = searchParams.get("email") as string;
   const password = searchParams.get("password") as string;
 
@@ -17,6 +18,7 @@ export function GET(request: NextRequest) {
     return Response.json(user);
   }
 
-  const slicedUsers = users.slice(offset, offset + limit);
+  const slicedUsers =
+    limit !== undefined ? users.slice(offset, offset + limit) : users;
   return Response.json(slicedUsers);
 }

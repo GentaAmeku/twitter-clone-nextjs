@@ -1,15 +1,20 @@
 "use server";
 
-import type { Post } from "@/app/_types";
+import { get } from "@/app/_lib/utils/fetcher";
+import type { GetPostResponse } from "@/app/api/posts/route";
 
-export const fetchPost = async (offset: number, perPage: number) => {
-  const params = {
-    offset: offset.toString(),
-    limit: perPage.toString(),
-  };
-  const posts = (await fetch(
-    `${process.env.API_SERVER_URL}/api/posts?${new URLSearchParams(params)}`,
-  ).then((res) => res.json())) as Post[];
+export const fetchPost = async (path: string) => {
+  const queryString = path.split("?")[1] || ""; // クエリ部分を取得
+  const params = new URLSearchParams(queryString);
+  const cursor = params.get("cursor") || "";
+  const limit = params.get("limit") as string;
 
-  return { data: posts, next: posts.length > 0 };
+  console.log(params, params.get("limit"));
+
+  const response = await get<GetPostResponse>({
+    url: "/api/posts",
+    queryParams: { cursor, limit },
+  });
+
+  return response;
 };
