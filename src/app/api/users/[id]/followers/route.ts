@@ -1,5 +1,5 @@
-import type { User } from "@/app/_types";
 import { postsDb, usersDb } from "@/app/api/_db";
+import type { User } from "@/types";
 import type { NextRequest } from "next/server";
 
 export async function GET(

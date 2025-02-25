@@ -1,5 +1,5 @@
-import { AppProvider } from "@/app/_lib/store";
-import { notojp } from "@/app/_styles/fonts";
+import { AppProvider } from "@/lib/store";
+import { notojp } from "@/styles/fonts";
 
 import "./globals.css";
 import "@mantine/core/styles.css";

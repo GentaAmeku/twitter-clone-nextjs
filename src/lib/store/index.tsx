@@ -2,7 +2,7 @@
 
 import { Provider as JotaiProvider } from "jotai";
 
-import { MantineProvider, createTheme } from "@/app/_lib/mantine/core";
+import { MantineProvider, createTheme } from "@/lib/mantine/core";
 
 const theme = createTheme({
   /** Put your mantine theme override here */

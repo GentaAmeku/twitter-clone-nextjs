@@ -1,8 +1,8 @@
 "use server";
 
-import { LOGIN_USER_ID } from "@/app/_constants";
-import { get } from "@/app/_lib/utils/fetcher";
-import type { PostWithUser } from "@/app/_types";
+import { LOGIN_USER_ID } from "@/constants";
+import { get } from "@/lib/utils/fetcher";
+import type { PostWithUser } from "@/types";
 import PostList from "./presentational";
 
 const INITIAL_NUMBER_OF_USERS = 10;

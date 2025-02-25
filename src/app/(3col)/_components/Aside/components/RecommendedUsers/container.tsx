@@ -1,7 +1,7 @@
 "use server";
 
-import { get } from "@/app/_lib/utils/fetcher";
 import type { User } from "@/app/_types";
+import { get } from "@/lib/utils/fetcher";
 import RecommendedUsers from "./presentational";
 
 const INITIAL_NUMBER_OF_USERS = 3;

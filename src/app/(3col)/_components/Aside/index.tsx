@@ -1,5 +1,5 @@
 import HeaderBox from "@/app/(3col)/_components/HeaderBox";
-import { Flex, Space, Stack } from "@/app/_lib/mantine/core";
+import { Flex, Space, Stack } from "@/lib/mantine/core";
 import Dev from "./components/Dev";
 import RecommendedUsers from "./components/RecommendedUsers";
 import Search from "./components/Search";

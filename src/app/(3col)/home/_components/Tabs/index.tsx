@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs as MantineTabs, Text } from "@/app/_lib/mantine/core";
+import { Tabs as MantineTabs, Text } from "@/lib/mantine/core";
 import { useState } from "react";
 import { TABS, TAB_A, TAB_B } from "./data";
 

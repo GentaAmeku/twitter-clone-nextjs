@@ -1,13 +1,7 @@
 "use client";
 
-import { useIsMd } from "@/app/_lib/hooks";
-import {
-  Avatar,
-  AvatarGroup,
-  Flex,
-  Space,
-  Text,
-} from "@/app/_lib/mantine/core";
+import { useIsMd } from "@/lib/hooks";
+import { Avatar, AvatarGroup, Flex, Space, Text } from "@/lib/mantine/core";
 import { IconBrandTwitterFilled, IconBrandXFilled } from "@tabler/icons-react";
 
 export default function RightSide() {

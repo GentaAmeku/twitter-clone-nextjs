@@ -1,7 +1,7 @@
 "use client";
 
-import { Loader, Space } from "@/app/_lib/mantine/core";
-import type { Post } from "@/app/_types";
+import { Loader, Space } from "@/lib/mantine/core";
+import type { Post } from "@/types";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import PostCard from "../PostCard";

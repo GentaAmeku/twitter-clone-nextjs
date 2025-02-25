@@ -1,4 +1,4 @@
-import { Anchor, Flex, Space, Stack, Text } from "@/app/_lib/mantine/core";
+import { Anchor, Flex, Space, Stack, Text } from "@/lib/mantine/core";
 import { IconBrandTwitterFilled } from "@tabler/icons-react";
 import LoginForm from "./components/LoginForm";
 import ResponsiveContainer from "./components/ResponsiveContainer";

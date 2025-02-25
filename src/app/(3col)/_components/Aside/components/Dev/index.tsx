@@ -1,4 +1,4 @@
-import { ActionIcon, Flex } from "@/app/_lib/mantine/core";
+import { ActionIcon, Flex } from "@/lib/mantine/core";
 import { IconBrandGithub } from "@tabler/icons-react";
 import Link from "next/link";
 

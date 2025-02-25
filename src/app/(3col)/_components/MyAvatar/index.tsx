@@ -1,4 +1,4 @@
-import { Avatar } from "@/app/_lib/mantine/core";
+import { Avatar } from "@/lib/mantine/core";
 
 type MyavatarProps = {
   size?: number | string;

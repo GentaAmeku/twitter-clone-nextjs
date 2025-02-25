@@ -2,7 +2,7 @@ import {
   Flex,
   ActionIcon as MantineActionIcon,
   Text,
-} from "@/app/_lib/mantine/core";
+} from "@/lib/mantine/core";
 
 type ActionIconProps = {
   icon: React.ReactNode;

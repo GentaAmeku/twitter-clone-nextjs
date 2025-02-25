@@ -1,7 +1,7 @@
 "use client";
 
-import { useIsMd } from "@/app/_lib/hooks";
-import { cn } from "@/app/_lib/utils";
+import { useIsMd } from "@/lib/hooks";
+import { cn } from "@/lib/utils";
 
 type ResponsiveContainerProps = {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-import { ActionIcon } from "@/app/_lib/mantine/core";
+import { ActionIcon } from "@/lib/mantine/core";
 import { IconBrandTwitterFilled } from "@tabler/icons-react";
 
 const BrandActionIcon = () => (

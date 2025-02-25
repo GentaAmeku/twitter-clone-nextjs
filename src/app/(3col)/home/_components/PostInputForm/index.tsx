@@ -9,7 +9,7 @@ import {
   Flex,
   Text,
   Textarea,
-} from "@/app/_lib/mantine/core";
+} from "@/lib/mantine/core";
 import { getFormProps, getTextareaProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import {
