@@ -1,7 +1,5 @@
 "use client";
 
-import { Provider as JotaiProvider } from "jotai";
-
 import { MantineProvider, createTheme } from "@/lib/mantine/core";
 
 const theme = createTheme({
@@ -9,9 +7,5 @@ const theme = createTheme({
 });
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <MantineProvider theme={theme}>
-      <JotaiProvider>{children}</JotaiProvider>
-    </MantineProvider>
-  );
+  return <MantineProvider theme={theme}>{children}</MantineProvider>;
 }
