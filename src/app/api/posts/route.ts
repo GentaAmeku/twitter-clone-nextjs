@@ -30,8 +30,8 @@ const generatePostData = (text: string, user: User): PostWithUser => {
 
 export type GetPostResponse = {
   data: PostWithUser[];
-  nextCursor: string;
-  hasNext: boolean;
+  next_cursor: string;
+  has_next: boolean;
 };
 
 export function GET(request: NextRequest) {
@@ -51,8 +51,8 @@ export function GET(request: NextRequest) {
 
   const response: GetPostResponse = {
     data: result,
-    nextCursor: result.at(-1)?.id || "",
-    hasNext: result.length > 0,
+    next_cursor: result.at(-1)?.id || "",
+    has_next: result.length > 0,
   };
 
   return Response.json(response);
