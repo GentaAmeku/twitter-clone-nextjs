@@ -1,5 +1,4 @@
 import { AppProvider } from "@/lib/store";
-import { notojp } from "@/styles/fonts";
 
 import "./globals.css";
 import "@mantine/core/styles.css";
@@ -10,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" className={`${notojp.variable}`}>
+    <html lang="ja">
       <body>
         <AppProvider>{children}</AppProvider>
       </body>

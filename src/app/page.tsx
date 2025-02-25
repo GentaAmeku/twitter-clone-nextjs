@@ -1,8 +1,8 @@
-import LeftSide from "@/components/LeftSide.tsx";
-import RightSide from "@/components/RightSide";
+import LeftSide from "@/app/_components/LeftSide.tsx";
+import RightSide from "@/app/_components/RightSide";
+import { PAGE_SIZE } from "@/constants";
 import { Card, Container, Flex } from "@/lib/mantine/core";
 import { cn } from "@/lib/utils";
-import { PAGE_SIZE } from "@/styles/layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
