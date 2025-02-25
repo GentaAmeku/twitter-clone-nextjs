@@ -5,7 +5,12 @@ import { useIsXl } from "@/lib/hooks";
 import { ActionIcon, Button, Flex, Text } from "@/lib/mantine/core";
 import { IconDots } from "@tabler/icons-react";
 
-const ProfileButton = () => {
+type ProfileButtonProps = {
+  name: string;
+  userId: string;
+};
+
+const ProfileButton = (props: ProfileButtonProps) => {
   const isXl = useIsXl();
   if (isXl)
     return (
@@ -33,9 +38,9 @@ const ProfileButton = () => {
           className="ml-3"
         >
           <Text size="sm" fw={700}>
-            Ameku Genta
+            {props.name}
           </Text>
-          <Text size="sm">@genta_ameku</Text>
+          <Text size="sm">{props.userId}</Text>
         </Flex>
       </Button>
     </div>

@@ -18,16 +18,16 @@ const variants: Variants = {
 };
 
 const getKey = (pageIndex: number, previousPageData: GetPostResponse) => {
-  if (previousPageData && !previousPageData.hasNext) return null;
+  if (previousPageData && !previousPageData.has_next) return null;
   if (pageIndex === 0) return "/api/posts?limit=10";
-  return `/api/posts?cursor=${previousPageData.nextCursor}&limit=${10}`;
+  return `/api/posts?cursor=${previousPageData.next_cursor}&limit=${10}`;
 };
 
 export default function PostList() {
   const { data, setSize, isLoading } = useSWRInfinite(getKey, fetchPost);
   const [ref, inView] = useInView();
   const posts = data ? data.flatMap((page) => page.data) : [];
-  const hasNext = data?.at(-1)?.hasNext;
+  const hasNext = data?.at(-1)?.has_next;
 
   useEffect(() => {
     if (inView && hasNext && !isLoading) {
