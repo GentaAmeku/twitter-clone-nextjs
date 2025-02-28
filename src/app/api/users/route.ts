@@ -1,14 +1,6 @@
 import { usersDb } from "@/app/api/_db";
 import type { NextRequest } from "next/server";
 
-export type GetUserQueryParams = {
-  search?: string;
-  offset?: string;
-  limit?: string;
-  email?: string;
-  password?: string;
-};
-
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const offset = Number(searchParams.get("offset") || 0);
