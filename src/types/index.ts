@@ -36,3 +36,9 @@ export type Trend = {
   group: Group;
   volume: number;
 };
+
+export type PostsResponse = {
+  data: PostWithUser[];
+  next_cursor: string;
+  has_next: boolean;
+};

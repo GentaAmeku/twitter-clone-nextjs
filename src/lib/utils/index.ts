@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -20,4 +21,11 @@ export const shuffle = <T>(arr: T[]): T[] => {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
+};
+
+export const sortByTime = (posts: Post[]): Post[] => {
+  return posts.sort((a, b) => {
+    const [timeA, timeB] = [dayjs(a.time), dayjs(b.time)];
+    return timeA.isAfter(timeB) ? -1 : 1;
+  });
 };

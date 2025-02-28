@@ -1,16 +1,10 @@
 import { postsDb } from "@/app/api/_db";
+import { sortByTime } from "@/lib/utils";
 import { get } from "@/lib/utils/fetcher";
-import type { Post, PostWithUser, User } from "@/types";
+import type { Post, PostWithUser, PostsResponse, User } from "@/types";
 import dayjs from "dayjs";
 import type { NextRequest } from "next/server";
 import { v4 as uuidv4 } from "uuid";
-
-const sortByTime = (posts: Post[]): Post[] => {
-  return posts.sort((a, b) => {
-    const [timeA, timeB] = [dayjs(a.time), dayjs(b.time)];
-    return timeA.isAfter(timeB) ? -1 : 1;
-  });
-};
 
 const generatePostData = (text: string, user: User): PostWithUser => {
   const now = dayjs();
@@ -28,12 +22,6 @@ const generatePostData = (text: string, user: User): PostWithUser => {
   };
 };
 
-export type GetPostResponse = {
-  data: PostWithUser[];
-  next_cursor: string;
-  has_next: boolean;
-};
-
 export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const cursor = searchParams.get("cursor");
@@ -49,7 +37,7 @@ export function GET(request: NextRequest) {
   const result =
     limit !== undefined ? sorted.slice(offset, offset + limit) : posts;
 
-  const response: GetPostResponse = {
+  const response: PostsResponse = {
     data: result,
     next_cursor: result.at(-1)?.id || "",
     has_next: result.length > 0,

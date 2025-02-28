@@ -5,9 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import useSWRInfinite from "swr/infinite";
 import PostCard from "../PostCard";
-import { fetchPost } from "./action";
+import { fetchPost } from "./actions";
 
-import type { GetPostResponse } from "@/app/api/posts/route";
+import type { PostsResponse } from "@/types";
 import type { Variants } from "framer-motion";
 import { useEffect } from "react";
 
@@ -17,7 +17,7 @@ const variants: Variants = {
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
-const getKey = (pageIndex: number, previousPageData: GetPostResponse) => {
+const getKey = (pageIndex: number, previousPageData: PostsResponse) => {
   if (previousPageData && !previousPageData.has_next) return null;
   if (pageIndex === 0) return "/api/posts?limit=10";
   return `/api/posts?cursor=${previousPageData.next_cursor}&limit=${10}`;

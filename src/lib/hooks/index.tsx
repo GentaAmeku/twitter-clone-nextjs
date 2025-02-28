@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@mantine/hooks";
+import { useMediaQuery } from "@/lib/mantine/hooks";
 
 export function useIsSm() {
   return useMediaQuery("(max-width: 640px)");
