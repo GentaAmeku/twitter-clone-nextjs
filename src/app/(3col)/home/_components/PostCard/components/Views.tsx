@@ -1,5 +1,5 @@
 import { formatNumber } from "@/lib/utils";
-import { IconHeart } from "@tabler/icons-react";
+import { IconChartColumn } from "@tabler/icons-react";
 import ActionIcon from "./ActionIcon";
 
 type ViewsProps = {
@@ -8,7 +8,7 @@ type ViewsProps = {
 
 export default function Views({ children }: ViewsProps) {
   return (
-    <ActionIcon icon={<IconHeart size={18} />}>
+    <ActionIcon icon={<IconChartColumn size={18} />}>
       {formatNumber(children as number)}
     </ActionIcon>
   );
