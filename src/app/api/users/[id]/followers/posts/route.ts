@@ -1,5 +1,6 @@
 import { postsDb, usersDb } from "@/app/api/_db";
-import type { User } from "@/types";
+import { sortByTime } from "@/lib/utils";
+import type { PostsResponse, User } from "@/types";
 import type { NextRequest } from "next/server";
 
 export async function GET(
@@ -12,15 +13,29 @@ export async function GET(
       return new Response(null, { status: 404 });
     }
     const searchParams = request.nextUrl.searchParams;
-    const offset = Number(searchParams.get("offset") || 0);
-    const limit = Number(searchParams.get("limit") || 10);
+    const cursor = searchParams.get("cursor");
+    const limitParam = searchParams.get("limit");
+    const limit = limitParam ? Math.min(Number(limitParam), 100) : undefined;
+
     const { followers } = usersDb.get((user) => user.id === id) as User;
     const posts = postsDb.getAll();
     const followersPosts = posts.filter((post) =>
       followers.some((u) => u.user_id === post.user_id),
     );
-    const slicedFollowersPosts = followersPosts.slice(offset, offset + limit);
-    return Response.json(slicedFollowersPosts);
+    const sorted = sortByTime(followersPosts);
+
+    const i = sorted.findIndex((d) => d.id === cursor);
+    const offset = i === -1 ? 0 : i + 1;
+
+    const result =
+      limit !== undefined ? sorted.slice(offset, offset + limit) : posts;
+
+    const response: PostsResponse = {
+      data: result,
+      next_cursor: result.at(-1)?.id || "",
+      has_next: result.length > 0,
+    };
+    return Response.json(response);
   } catch (error) {
     if (error instanceof Error) {
       return new Response(error.message, {
