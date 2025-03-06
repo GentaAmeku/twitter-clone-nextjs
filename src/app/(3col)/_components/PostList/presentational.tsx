@@ -4,12 +4,16 @@ import { Loader, Space } from "@/lib/mantine/core";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import useSWRInfinite from "swr/infinite";
-import PostCard from "../PostCard";
-import { fetchPost } from "./actions";
+import PostCard from "./components/PostCard";
 
 import type { PostsResponse } from "@/types";
 import type { Variants } from "framer-motion";
 import { useEffect } from "react";
+
+type PostListProps<T extends PostsResponse> = {
+  getKey: (pageIndex: number, previousPageData: T) => string | null;
+  action: (key: string) => Promise<T>;
+};
 
 const variants: Variants = {
   initial: { opacity: 0 },
@@ -17,14 +21,11 @@ const variants: Variants = {
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
-const getKey = (pageIndex: number, previousPageData: PostsResponse) => {
-  if (previousPageData && !previousPageData.has_next) return null;
-  if (pageIndex === 0) return "/api/posts?limit=10";
-  return `/api/posts?cursor=${previousPageData.next_cursor}&limit=${10}`;
-};
-
-export default function PostList() {
-  const { data, setSize, isLoading } = useSWRInfinite(getKey, fetchPost);
+export default function PostList<T extends PostsResponse>({
+  getKey,
+  action,
+}: PostListProps<T>) {
+  const { data, setSize, isLoading } = useSWRInfinite(getKey, action);
   const [ref, inView] = useInView();
   const posts = data ? data.flatMap((page) => page.data) : [];
   const hasNext = data?.at(-1)?.has_next;

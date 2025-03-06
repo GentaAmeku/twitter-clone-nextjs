@@ -1,7 +1,7 @@
-export const TAB_A = "for-you";
-export const TAB_B = "following";
+export const TAB_FOR_YOU = "for-you";
+export const TAB_FOLLOWING = "following";
 
-export type TabsValue = typeof TAB_A | typeof TAB_B;
+export type TabsValue = typeof TAB_FOR_YOU | typeof TAB_FOLLOWING;
 
 interface Tabs {
   value: TabsValue;
@@ -9,6 +9,6 @@ interface Tabs {
 }
 
 export const TABS: Tabs[] = [
-  { value: TAB_A, label: "For you" },
-  { value: TAB_B, label: "Following" },
+  { value: TAB_FOR_YOU, label: "For you" },
+  { value: TAB_FOLLOWING, label: "Following" },
 ];

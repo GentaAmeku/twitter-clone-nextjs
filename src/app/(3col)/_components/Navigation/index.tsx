@@ -5,13 +5,13 @@ import {
   IconHome,
   IconMail,
   IconSearch,
-  IconUser,
 } from "@tabler/icons-react";
 import HeaderBox from "../HeaderBox";
 import BrandActionIcon from "./components/BrandActionIcon";
 import NaviButton from "./components/NaviButton";
 import PostButton from "./components/PostButton";
 import ProfileButton from "./components/ProfileButton";
+import ProfileLink from "./components/ProfileLink";
 import ResponsiveStack from "./components/ResponsiveStack";
 
 export default function Navigation() {
@@ -34,13 +34,15 @@ export default function Navigation() {
               </Flex>
             </HeaderBox>
             <ResponsiveStack>
-              <NaviButton icon={<IconHome size={28} />}>Home</NaviButton>
+              <NaviButton icon={<IconHome size={28} />} href="/home">
+                Home
+              </NaviButton>
               <NaviButton icon={<IconSearch size={28} />}>Explore</NaviButton>
               <NaviButton icon={<IconBell size={28} />}>
                 Notifications
               </NaviButton>
               <NaviButton icon={<IconMail size={28} />}>Messages</NaviButton>
-              <NaviButton icon={<IconUser size={28} />}>Profile</NaviButton>
+              <ProfileLink />
               <NaviButton icon={<IconDotsCircleHorizontal size={28} />}>
                 More
               </NaviButton>

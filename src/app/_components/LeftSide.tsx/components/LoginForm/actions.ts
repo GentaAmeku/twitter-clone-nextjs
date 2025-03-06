@@ -1,7 +1,7 @@
 "use server";
 
-import { get } from "@/lib/utils/fetcher";
-import type { User } from "@/types";
+import { post } from "@/lib/utils/fetcher";
+import type { SuccessResponse, User } from "@/types";
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
 import { loginSchema } from "./schema";
@@ -15,17 +15,22 @@ export async function login(prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
-  const users = await get<User[]>({ url: "/api/users" });
-
   // debug
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  const hasUser = users.find((user) => {
-    const { email, password } = submission.value;
-    return user.email === email && user.password === password;
-  });
+  try {
+    const { success } = await post<
+      SuccessResponse<User>,
+      Pick<User, "email" | "password">
+    >({
+      url: "/api/auth/login",
+      body: submission.value,
+    });
 
-  if (!hasUser) return submission.reply({ formErrors: ["Account not found."] });
+    if (!success) return submission.reply({ formErrors: ["Login failed"] });
+  } catch (error) {
+    return submission.reply({ formErrors: [(error as Error).message] });
+  }
 
   redirect("/home");
 }

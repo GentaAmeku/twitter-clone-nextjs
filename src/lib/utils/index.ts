@@ -1,3 +1,4 @@
+import type { Post } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
@@ -23,7 +24,7 @@ export const shuffle = <T>(arr: T[]): T[] => {
   return arr;
 };
 
-export const sortByTime = (posts: Post[]): Post[] => {
+export const sortByTime = <T extends Post>(posts: T[]): T[] => {
   return posts.sort((a, b) => {
     const [timeA, timeB] = [dayjs(a.time), dayjs(b.time)];
     return timeA.isAfter(timeB) ? -1 : 1;

@@ -1,14 +1,8 @@
 import { getRandomInt } from "@/lib/utils";
 import type { Post, PostWithUser, Trend, User } from "@/types";
 import dayjs from "dayjs";
-import en from "dayjs/locale/en";
-import relativeTime from "dayjs/plugin/relativeTime";
 import { v4 as uuidv4 } from "uuid";
 import { type Model, createDatabase } from "../createDatabase";
-
-dayjs.extend(relativeTime);
-dayjs.locale(en);
-const now = dayjs();
 
 const mergeUser = (posts: Post[], users: readonly User[]): PostWithUser[] => {
   return posts.map((post) => {
@@ -21,6 +15,7 @@ const generateMockPosts = (
   trends: readonly Trend[],
   users: readonly User[],
 ): Post[] => {
+  const now = dayjs();
   return [
     ...Array(100 - 1)
       .keys()
@@ -35,7 +30,7 @@ const generateMockPosts = (
           views: getRandomInt(20000),
           time,
           fromNow: time.fromNow(),
-          user_id: users[k].user_id,
+          user_id: (users.at(getRandomInt(users.length - 1)) as User).user_id,
         };
       }),
   ];

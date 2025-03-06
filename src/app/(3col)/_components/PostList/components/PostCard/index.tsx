@@ -3,6 +3,7 @@
 import { ActionIcon, Avatar, Box, Flex, Text } from "@/lib/mantine/core";
 import type { PostWithUser } from "@/types";
 import { IconDots, IconRosetteDiscountCheckFilled } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 import Bookmark from "./components/Bookmark";
 import Like from "./components/Like";
 import Reply from "./components/Reply";
@@ -15,16 +16,26 @@ type PostCardProps = {
 };
 
 export default function PostCard({ post }: PostCardProps) {
+  const router = useRouter();
+  const handleClickAvatar = () => router.push(`/${post.user_id}`);
   return (
-    <article className="w-full cursor-pointer hover:bg-gray-100 transition-colors border-b break-all p-4">
+    <article className="w-full cursor-pointer hover:bg-gray-100 transition-colors border-b break-all p-4 relative">
       <Flex>
-        <Avatar
+        <ActionIcon
+          variant="subtle"
+          color="gray"
           radius="sm"
+          onClick={handleClickAvatar}
           size={45}
-          key={post.user?.name}
-          name={post.user?.name}
-          color="initials"
-        />
+        >
+          <Avatar
+            radius="sm"
+            size={45}
+            key={post.user?.name}
+            name={post.user?.name}
+            color="initials"
+          />
+        </ActionIcon>
         <Flex direction="column" justify="center" className="ml-3" flex={1}>
           <Flex justify="space-between" className="w-full">
             <Flex align="center" gap={3}>
