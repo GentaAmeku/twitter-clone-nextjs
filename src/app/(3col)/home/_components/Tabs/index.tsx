@@ -2,15 +2,15 @@
 
 import { Tabs as MantineTabs, Text } from "@/lib/mantine/core";
 import { useState } from "react";
-import { TABS, TAB_A, TAB_B } from "./data";
+import { TABS, TAB_FOLLOWING, TAB_FOR_YOU } from "./data";
 
 const { List, Tab, Panel } = MantineTabs;
 
 function Tabs({ children }: { children: React.ReactNode }) {
-  const [activeTab, setActiveTab] = useState<string | null>(TAB_A);
+  const [activeTab, setActiveTab] = useState<string | null>(TAB_FOR_YOU);
   return (
     <MantineTabs
-      defaultValue={TAB_A}
+      defaultValue={TAB_FOR_YOU}
       variant="unstyled"
       value={activeTab}
       onChange={setActiveTab}
@@ -44,16 +44,16 @@ function Tabs({ children }: { children: React.ReactNode }) {
   );
 }
 
-export const TabA = function TabsA({
+export const ForyouTab = function TabsA({
   children,
 }: { children: React.ReactNode }) {
-  return <Panel value={TAB_A}>{children}</Panel>;
+  return <Panel value={TAB_FOR_YOU}>{children}</Panel>;
 };
 
-export const TabB = function TabsB({
+export const FollowingTab = function TabsB({
   children,
 }: { children: React.ReactNode }) {
-  return <Panel value={TAB_B}>{children}</Panel>;
+  return <Panel value={TAB_FOLLOWING}>{children}</Panel>;
 };
 
 export default Tabs;

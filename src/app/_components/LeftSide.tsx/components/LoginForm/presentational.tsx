@@ -14,6 +14,7 @@ import type { User } from "@/types";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { IconArrowRight } from "@tabler/icons-react";
+import Link from "next/link";
 import { useActionState } from "react";
 import { login } from "./actions";
 import { loginSchema } from "./schema";
@@ -94,7 +95,7 @@ export default function LoginForm({ guest }: LoginFormProps) {
         </div>
       </Stack>
       <Space h="sm" />
-      <Anchor href="#" underline="always" ml={8}>
+      <Anchor href="#" underline="always" ml={8} component={Link}>
         forgot password?
       </Anchor>
       <Space h="xl" />

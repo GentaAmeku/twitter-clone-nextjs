@@ -1,9 +1,9 @@
 "use client";
 
-import MyAvatar from "@/app/(3col)/_components/MyAvatar";
 import { useIsXl } from "@/lib/hooks";
-import { ActionIcon, Button, Flex, Text } from "@/lib/mantine/core";
+import { ActionIcon, Avatar, Button, Flex, Text } from "@/lib/mantine/core";
 import { IconDots } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 
 type ProfileButtonProps = {
   name: string;
@@ -12,10 +12,18 @@ type ProfileButtonProps = {
 
 const ProfileButton = (props: ProfileButtonProps) => {
   const isXl = useIsXl();
+  const router = useRouter();
+  const handleClickAvatar = () => router.push(`/${props.userId}`);
   if (isXl)
     return (
       <ActionIcon variant="subtle" radius="xl" size={60} color="white">
-        <MyAvatar />
+        <Avatar
+          radius="xl"
+          size={45}
+          key={props.name}
+          name={props.name}
+          color="initials"
+        />
       </ActionIcon>
     );
   return (
@@ -29,8 +37,15 @@ const ProfileButton = (props: ProfileButtonProps) => {
         rightSection={<IconDots color="black" />}
         px={8}
         className="active:!transform-none hover:!bg-gray-200 transition-colors !w-[240px]"
+        onClick={handleClickAvatar}
       >
-        <MyAvatar />
+        <Avatar
+          radius="xl"
+          size={45}
+          key={props.name}
+          name={props.name}
+          color="initials"
+        />
         <Flex
           direction="column"
           justify="center"
@@ -40,7 +55,7 @@ const ProfileButton = (props: ProfileButtonProps) => {
           <Text size="sm" fw={700}>
             {props.name}
           </Text>
-          <Text size="sm">{props.userId}</Text>
+          <Text size="sm" c="var(--color-gray-600)">{`@${props.userId}`}</Text>
         </Flex>
       </Button>
     </div>

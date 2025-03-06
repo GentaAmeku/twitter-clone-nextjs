@@ -1,4 +1,6 @@
+import { get } from "@/lib/utils/fetcher";
 import { type NextRequest, NextResponse } from "next/server";
+import type { SuccessResponse, User } from "./types";
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next({
@@ -8,15 +10,24 @@ export async function middleware(request: NextRequest) {
   });
 
   const path = new URL(request.url).pathname;
-  const user = true;
 
-  if (!user) return NextResponse.redirect(new URL("/login", request.url));
+  if (path === "/") return response;
 
-  return response;
+  try {
+    const { data: user } = await get<SuccessResponse<User>>({
+      url: "/api/users/me",
+    });
+    if (!user) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+    return response;
+  } catch (error) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 }
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!api/|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

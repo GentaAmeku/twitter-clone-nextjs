@@ -1,7 +1,7 @@
 "use server";
 
 import { get } from "@/lib/utils/fetcher";
-import type { User } from "@/types";
+import type { SuccessResponse, User } from "@/types";
 
 export const fetchUsers = async (path: string) => {
   const queryString = path.split("?")[1] || "";
@@ -9,10 +9,10 @@ export const fetchUsers = async (path: string) => {
   const search = params.get("search") || "";
   const limit = params.get("limit") as string;
 
-  const response = await get<User[]>({
+  const { data: users } = await get<SuccessResponse<User[]>>({
     url: "/api/users",
     queryParams: { search, limit },
   });
 
-  return response;
+  return users;
 };

@@ -7,7 +7,7 @@ const BrandActionIcon = () => (
     color="gray"
     size={60}
     radius="xl"
-    aria-label="BrandIcon"
+    aria-label="brand-icon"
   >
     <IconBrandTwitterFilled size={36} color="var(--color-twitter)" />
   </ActionIcon>

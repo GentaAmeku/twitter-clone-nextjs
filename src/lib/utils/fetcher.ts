@@ -64,7 +64,8 @@ export const fetcher = async <TResponse, TBody = undefined>({
   });
 
   if (!res.ok) {
-    throw new Error(`API Error: ${res.status} ${res.statusText}`);
+    const errorData = await res.json();
+    throw new Error(errorData.error.message);
   }
 
   return res.json();

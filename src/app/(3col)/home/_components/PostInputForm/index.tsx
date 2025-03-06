@@ -1,8 +1,8 @@
 "use client";
 
-import MyAvatar from "@/app/(3col)/_components/MyAvatar";
 import {
   ActionIcon,
+  Avatar,
   Box,
   Button,
   Divider,
@@ -10,6 +10,7 @@ import {
   Text,
   Textarea,
 } from "@/lib/mantine/core";
+import type { User } from "@/types";
 import { getFormProps, getTextareaProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import {
@@ -18,13 +19,19 @@ import {
   IconPhoto,
   IconWorld,
 } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { post } from "./actions";
 import { postSchema } from "./schema";
 
-export default function PostInputForm() {
+type PostInputFormProps = {
+  user: User;
+};
+
+export default function PostInputForm({ user }: PostInputFormProps) {
+  const router = useRouter();
   const { mutate } = useSWRConfig();
   const [lastResult, action, isPending] = useActionState(post, undefined);
   const [form, fields] = useForm({
@@ -35,6 +42,8 @@ export default function PostInputForm() {
     shouldValidate: "onSubmit",
   });
   const isDisabled: boolean = !fields.text.value;
+
+  const handleClickAvatar = () => router.push(`/${user.user_id}`);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
@@ -49,9 +58,18 @@ export default function PostInputForm() {
 
   return (
     <form action={action} {...getFormProps(form)}>
-      <Box px={20} pt={20}>
+      <Box pl={16} pr={20} pt={20}>
         <Flex align="flex-start">
-          <MyAvatar size={40} />
+          <ActionIcon variant="subtle" radius="xl" size={43} color="white">
+            <Avatar
+              radius="xl"
+              size={42}
+              key={user.name}
+              name={user.name}
+              color="initials"
+              onClick={handleClickAvatar}
+            />
+          </ActionIcon>
           <Flex direction="column" className="ml-3 w-full">
             <Textarea
               {...getTextareaProps(fields.text)}
