@@ -31,8 +31,6 @@ export async function GET(
     const userPosts = posts.filter((post) => post.user_id === user_id);
     const sorted = sortByTime(userPosts);
 
-    console.log(posts.length, user_id, userPosts.length);
-
     const i = sorted.findIndex((d) => d.id === cursor);
     const offset = i === -1 ? 0 : i + 1;
 

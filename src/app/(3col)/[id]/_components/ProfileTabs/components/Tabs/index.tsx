@@ -14,7 +14,6 @@ function Tabs({ children }: { children: React.ReactNode }) {
       variant="unstyled"
       value={activeTab}
       onChange={setActiveTab}
-      className="border-l border-r min-h-[47vh]"
     >
       <List justify="space-between" grow>
         {TABS.map((tab) => {

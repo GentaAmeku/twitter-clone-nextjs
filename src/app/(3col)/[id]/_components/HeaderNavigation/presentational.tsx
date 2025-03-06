@@ -18,7 +18,7 @@ export default function HeaderNavigation({
     <Flex
       justify="flex-start"
       align="center"
-      className="sticky top-0 z-10 bg-white opacity-95 p-1 border-l border-r"
+      className="sticky top-0 z-10 bg-white opacity-95 p-1"
     >
       <ActionIcon
         variant="subtle"

@@ -11,7 +11,7 @@ type ProfileBodyProps = Pick<
 
 export default function ProfileBody(props: ProfileBodyProps) {
   return (
-    <Box p={18} className="border-l border-r">
+    <Box p={18}>
       <Flex>
         <Text size="xl" fw={700}>
           {props.name}

@@ -14,7 +14,7 @@ export default function ProfilePage({
   params,
 }: { params: Promise<{ id: string }> }) {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen border-r border-l">
       <HeaderNavigation promise={params} />
       <BackgroundImage
         component="a"

@@ -6,7 +6,7 @@ type ProfileHeaderProps = {
 
 export default function ProfileHeader({ name }: ProfileHeaderProps) {
   return (
-    <Flex justify="right" className="p-4 w-full relative border-l border-r">
+    <Flex justify="right" className="p-4 w-full relative">
       <Avatar
         size={140}
         variant="filled"
