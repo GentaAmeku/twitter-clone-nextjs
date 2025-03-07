@@ -1,7 +1,8 @@
 import { usersDb } from "@/app/api/_db";
+import { handleError } from "@/app/api/_utils/errorHandler";
+import { NotFound } from "@/app/api/_utils/notFound";
 import type { ResponseData, User } from "@/types";
-import { type NextRequest, NextResponse } from "next/server";
-import { handleError } from "../../_utils/errorHandler";
+import type { NextRequest } from "next/server";
 
 export async function GET(
   request: NextRequest,
@@ -12,16 +13,7 @@ export async function GET(
     const user = usersDb.get((user) => user.user_id === user_id);
 
     if (!user) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: {
-            message: "User not found",
-            code: "NOT_FOUND",
-          },
-        },
-        { status: 404 },
-      );
+      return NotFound({ message: "User not found" });
     }
 
     const response: ResponseData<User> = {

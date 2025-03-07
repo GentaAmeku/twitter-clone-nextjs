@@ -1,8 +1,9 @@
 import { postsDb } from "@/app/api/_db";
 import { handleError } from "@/app/api/_utils/errorHandler";
+import { NotFound } from "@/app/api/_utils/notFound";
 import { sortByTime } from "@/lib/utils";
 import type { PostsResponse, ResponseData } from "@/types";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function GET(
   request: NextRequest,
@@ -11,16 +12,7 @@ export async function GET(
   try {
     const user_id = (await params).user_id;
     if (!user_id) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: {
-            message: "user not found",
-            code: "NOT_FOUND",
-          },
-        },
-        { status: 404 },
-      );
+      return NotFound({ message: "User not found" });
     }
     const searchParams = request.nextUrl.searchParams;
     const cursor = searchParams.get("cursor");

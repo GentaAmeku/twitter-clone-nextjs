@@ -1,6 +1,6 @@
 import { postsDb } from "@/app/api/_db";
+import { NotFound } from "@/app/api/_utils/notFound";
 import type { PostWithUser, ResponseData } from "@/types";
-import { NextResponse } from "next/server";
 import { handleError } from "../../_utils/errorHandler";
 
 export async function GET(
@@ -10,16 +10,7 @@ export async function GET(
   try {
     const id = (await params).id;
     if (!id) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: {
-            message: "post not found",
-            code: "NOT_FOUND",
-          },
-        },
-        { status: 404 },
-      );
+      return NotFound({ message: "Post not found" });
     }
     const post = postsDb.get((post) => post.id === id);
 
