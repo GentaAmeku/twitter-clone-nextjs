@@ -2,6 +2,7 @@
 
 import { Avatar, Flex, Paper, ScrollArea, Text } from "@/lib/mantine/core";
 import type { User } from "@/types";
+import { useRouter } from "next/navigation";
 import { memo } from "react";
 import useSWR from "swr";
 import { fetchUsers } from "./actions";
@@ -19,6 +20,13 @@ function UsersList({ search, shouldHide }: UsersListProps) {
     search ? `/api/users?search=${search}&limit=${NUMBER_OF_USERS}` : null,
     fetchUsers,
   );
+  const router = useRouter();
+
+  const handleClick = (userId: string, e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/${userId}`);
+  };
 
   if (shouldHide) return null;
 
@@ -27,7 +35,7 @@ function UsersList({ search, shouldHide }: UsersListProps) {
       shadow="md"
       radius="md"
       withBorder
-      className="absolute w-full top-[100%] z-1"
+      className="absolute w-full top-[100%] z-20"
     >
       {!users || users?.length === 0 ? (
         <NoUsers />
@@ -39,6 +47,7 @@ function UsersList({ search, shouldHide }: UsersListProps) {
               key={user.id}
               className="w-full cursor-pointer hover:bg-gray-100 transition-colors"
               p="md"
+              onMouseDown={(e) => handleClick(user.user_id, e)}
             >
               <Avatar
                 radius="sm"

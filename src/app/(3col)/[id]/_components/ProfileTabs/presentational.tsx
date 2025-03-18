@@ -1,6 +1,7 @@
+import Tabs from "@/app/(3col)/_components/Tabs";
 import LikesTab from "./components/LikesTab";
 import PostsTab from "./components/PostsTab";
-import Tabs from "./components/Tabs";
+import { TAB_POSTS, tabs } from "./data";
 
 type ProfileTabsProps = {
   userId: string;
@@ -8,7 +9,7 @@ type ProfileTabsProps = {
 
 export default function ProfileTabs({ userId }: ProfileTabsProps) {
   return (
-    <Tabs>
+    <Tabs tabs={tabs} defaultValue={TAB_POSTS}>
       <PostsTab userId={userId} />
       <LikesTab userId={userId} />
     </Tabs>

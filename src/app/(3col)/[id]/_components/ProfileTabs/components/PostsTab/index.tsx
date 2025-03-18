@@ -1,8 +1,9 @@
 "use client";
 
-import { PostsTab as Tab } from "@/app/(3col)/[id]/_components/ProfileTabs/components/Tabs";
 import PostList from "@/app/(3col)/_components/PostList";
+import TabPanel from "@/app/(3col)/_components/Tabs/Panel";
 import type { PostsResponse } from "@/types";
+import { TAB_POSTS } from "../../data";
 import { fetchMyPost } from "./actions";
 
 type PostsTabProps = {
@@ -18,8 +19,8 @@ const getMyPostsKey =
 
 export default function PostsTab({ userId }: PostsTabProps) {
   return (
-    <Tab>
+    <TabPanel value={TAB_POSTS}>
       <PostList getKey={getMyPostsKey(userId)} action={fetchMyPost} />
-    </Tab>
+    </TabPanel>
   );
 }

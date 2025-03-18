@@ -1,4 +1,4 @@
-import { Col, Flex, Space } from "@/lib/mantine/core";
+import { Col, Flex, Space, Text } from "@/lib/mantine/core";
 import {
   IconBell,
   IconDotsCircleHorizontal,
@@ -35,16 +35,30 @@ export default function Navigation() {
             </HeaderBox>
             <ResponsiveStack>
               <NaviButton icon={<IconHome size={28} />} href="/home">
-                Home
+                <Text size="xl" fw={600} inline>
+                  Home
+                </Text>
               </NaviButton>
-              <NaviButton icon={<IconSearch size={28} />}>Explore</NaviButton>
+              <NaviButton icon={<IconSearch size={28} />} href="/explore">
+                <Text size="xl" fw={600} inline>
+                  Explore
+                </Text>
+              </NaviButton>
               <NaviButton icon={<IconBell size={28} />}>
-                Notifications
+                <Text size="xl" fw={600} inline td="line-through">
+                  Notifications
+                </Text>
               </NaviButton>
-              <NaviButton icon={<IconMail size={28} />}>Messages</NaviButton>
+              <NaviButton icon={<IconMail size={28} />}>
+                <Text size="xl" fw={600} inline td="line-through">
+                  Messages
+                </Text>
+              </NaviButton>
               <ProfileLink />
               <NaviButton icon={<IconDotsCircleHorizontal size={28} />}>
-                More
+                <Text size="xl" fw={600} inline td="line-through">
+                  More
+                </Text>
               </NaviButton>
             </ResponsiveStack>
             <Space h="xl" />

@@ -1,9 +1,10 @@
-import Tabs from "@/app/(3col)/home/_components/Tabs";
+import Tabs from "@/app/(3col)/_components/Tabs";
 import { get } from "@/lib/utils/fetcher";
 import type { SuccessResponse, User } from "@/types";
 import type { Metadata } from "next";
 import ForyouTab from "./_components/FollowingTab";
 import FollowingTab from "./_components/ForyouTab";
+import { TAB_FOR_YOU, tabs } from "./_data";
 
 export const metadata: Metadata = {
   title: "Home / twitter-clone",
@@ -15,7 +16,12 @@ export default async function Home() {
     url: "/api/users/me",
   });
   return (
-    <Tabs>
+    <Tabs
+      tabs={tabs}
+      defaultValue={TAB_FOR_YOU}
+      tabsProps={{ className: "border-r border-l min-h-screen" }}
+      listProps={{ className: "sticky top-0 z-1 bg-white opacity-95" }}
+    >
       <ForyouTab user={user} />
       <FollowingTab user={user} />
     </Tabs>

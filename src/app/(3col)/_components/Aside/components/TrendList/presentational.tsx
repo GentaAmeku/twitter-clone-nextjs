@@ -1,8 +1,8 @@
 import Section from "@/app/(3col)/_components/Section";
+import TrendAnchor from "@/app/(3col)/_components/TrendAnchor";
 import { Stack } from "@/lib/mantine/core";
 import type { Trend } from "@/types";
 import ShowMore from "../../components/ShowMore";
-import TrendAnchor from "./components/TrendAnchor";
 
 type TrendListProps = {
   trends: Trend[];
