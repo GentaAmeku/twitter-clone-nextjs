@@ -47,6 +47,12 @@ export type PostsResponse = {
   has_next: boolean;
 };
 
+export type UsersResponse = {
+  data: User[];
+  next_cursor: string;
+  has_next: boolean;
+};
+
 export type PostResponse<T> = {
   data: T;
 };

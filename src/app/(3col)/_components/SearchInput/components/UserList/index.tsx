@@ -13,9 +13,10 @@ const NUMBER_OF_USERS = 10;
 type UsersListProps = {
   search: string;
   shouldHide: boolean;
+  hideUsersList: () => void;
 };
 
-function UsersList({ search, shouldHide }: UsersListProps) {
+function UsersList({ search, shouldHide, hideUsersList }: UsersListProps) {
   const { data: users } = useSWR<User[]>(
     search ? `/api/users?search=${search}&limit=${NUMBER_OF_USERS}` : null,
     fetchUsers,
@@ -26,6 +27,7 @@ function UsersList({ search, shouldHide }: UsersListProps) {
     e.preventDefault();
     e.stopPropagation();
     router.push(`/${userId}`);
+    hideUsersList();
   };
 
   if (shouldHide) return null;

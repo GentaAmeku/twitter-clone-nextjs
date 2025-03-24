@@ -3,22 +3,27 @@
 import { Flex, Input } from "@/lib/mantine/core";
 import { useDebouncedValue } from "@/lib/mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import UsersList from "./components/UserList";
 
-export default function SearchInput() {
+type SearchInputProps = {
+  defaultValue?: string;
+};
+
+export default function SearchInput({ defaultValue = "" }: SearchInputProps) {
   const router = useRouter();
   const [isFocused, setIsFocused] = useState(false);
-  const searchParams = useSearchParams();
-  const defaultQuery = searchParams.get("q") ?? "";
-  const [search, setSearch] = useState(defaultQuery);
+  const [search, setSearch] = useState(defaultValue);
   const [debouncedSearch] = useDebouncedValue(search, 200);
+  const showUsersList = () => setIsFocused(true);
+  const hideUsersList = () => setIsFocused(false);
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && search) {
       e.preventDefault();
       e.stopPropagation();
+      hideUsersList();
       router.push(`/explore?q=${search}`);
     }
   };
@@ -33,11 +38,15 @@ export default function SearchInput() {
         className="w-full"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onFocus={showUsersList}
+        onBlur={hideUsersList}
         onKeyDown={handleSearch}
       />
-      <UsersList search={debouncedSearch} shouldHide={!isFocused} />
+      <UsersList
+        search={debouncedSearch}
+        shouldHide={!isFocused}
+        hideUsersList={hideUsersList}
+      />
     </Flex>
   );
 }

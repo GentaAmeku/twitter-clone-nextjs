@@ -1,6 +1,6 @@
+import { dayjs } from "@/lib/utils/dayjs";
 import type { Post } from "@/types";
 import { type ClassValue, clsx } from "clsx";
-import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {

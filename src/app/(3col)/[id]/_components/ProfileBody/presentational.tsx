@@ -1,7 +1,7 @@
 import { Box, Flex, Space, Text } from "@/lib/mantine/core";
+import { dayjs } from "@/lib/utils/dayjs";
 import type { User } from "@/types";
 import { IconCalendarWeekFilled } from "@tabler/icons-react";
-import dayjs from "dayjs";
 import Anchor from "./components/Anchor";
 
 type ProfileBodyProps = Pick<

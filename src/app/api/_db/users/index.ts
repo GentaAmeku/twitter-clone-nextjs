@@ -1,6 +1,6 @@
 import { getRandomInt } from "@/lib/utils";
+import { dayjs } from "@/lib/utils/dayjs";
 import type { User } from "@/types";
-import dayjs from "dayjs";
 import { generateUsername } from "unique-username-generator";
 import { v4 as uuidv4 } from "uuid";
 import { createDatabase } from "../createDatabase";
