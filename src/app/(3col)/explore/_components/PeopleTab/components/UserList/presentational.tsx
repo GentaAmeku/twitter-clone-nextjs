@@ -26,8 +26,6 @@ export default function UserList<T extends UsersResponse>({
   action,
 }: UsersListProps<T>) {
   const { data, setSize, isLoading } = useSWRInfinite(getKey, action);
-
-  console.log("data", data);
   const [ref, inView] = useInView();
   const users = data ? data.flatMap((page) => page.data) : [];
   const hasNext = data?.at(-1)?.has_next;
