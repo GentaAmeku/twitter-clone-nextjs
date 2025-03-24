@@ -59,8 +59,6 @@ export const fetcher = async <TResponse, TBody = undefined>({
   const replacedUrl = replacePathParams(url, pathParams);
   const fullUrl = `${API_SERVER_URL}${buildUrl(replacedUrl, queryParams)}`;
 
-  console.log(fullUrl);
-
   const res = await fetch(fullUrl, {
     method,
     headers: { ...headers },
