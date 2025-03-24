@@ -1,5 +1,3 @@
-"use server";
-
 import { get } from "@/lib/utils/fetcher";
 import type { SuccessResponse, Trend } from "@/types";
 import TrendList from "./presentational";

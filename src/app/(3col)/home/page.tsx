@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   const { data: user } = await get<SuccessResponse<User>>({
     url: "/api/users/me",
+    cache: "no-store",
   });
   return (
     <Tabs

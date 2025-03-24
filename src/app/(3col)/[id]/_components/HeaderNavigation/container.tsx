@@ -1,5 +1,3 @@
-"use server";
-
 import { get } from "@/lib/utils/fetcher";
 import type { PostsResponse, SuccessResponse, User } from "@/types";
 import HeaderNavigation from "./presentational";
