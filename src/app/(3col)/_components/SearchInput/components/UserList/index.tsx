@@ -1,5 +1,9 @@
+"use client";
+
 import { Avatar, Flex, Paper, ScrollArea, Text } from "@/lib/mantine/core";
 import type { User } from "@/types";
+import { useRouter } from "next/navigation";
+import { memo } from "react";
 import useSWR from "swr";
 import { fetchUsers } from "./actions";
 import NoUsers from "./components/NoUsers";
@@ -9,13 +13,22 @@ const NUMBER_OF_USERS = 10;
 type UsersListProps = {
   search: string;
   shouldHide: boolean;
+  hideUsersList: () => void;
 };
 
-export default function UsersList({ search, shouldHide }: UsersListProps) {
+function UsersList({ search, shouldHide, hideUsersList }: UsersListProps) {
   const { data: users } = useSWR<User[]>(
     search ? `/api/users?search=${search}&limit=${NUMBER_OF_USERS}` : null,
     fetchUsers,
   );
+  const router = useRouter();
+
+  const handleClick = (userId: string, e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/${userId}`);
+    hideUsersList();
+  };
 
   if (shouldHide) return null;
 
@@ -24,7 +37,7 @@ export default function UsersList({ search, shouldHide }: UsersListProps) {
       shadow="md"
       radius="md"
       withBorder
-      className="absolute w-full top-[100%] z-1"
+      className="absolute w-full top-[100%] z-20"
     >
       {!users || users?.length === 0 ? (
         <NoUsers />
@@ -36,6 +49,7 @@ export default function UsersList({ search, shouldHide }: UsersListProps) {
               key={user.id}
               className="w-full cursor-pointer hover:bg-gray-100 transition-colors"
               p="md"
+              onMouseDown={(e) => handleClick(user.user_id, e)}
             >
               <Avatar
                 radius="sm"
@@ -62,3 +76,5 @@ export default function UsersList({ search, shouldHide }: UsersListProps) {
     </Paper>
   );
 }
+
+export default memo(UsersList);

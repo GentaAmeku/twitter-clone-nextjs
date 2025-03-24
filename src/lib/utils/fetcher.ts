@@ -1,5 +1,3 @@
-const API_SERVER_URL = process.env.API_SERVER_URL || "";
-
 interface FetchOptions<TBody> {
   url: string;
   method?: "GET" | "POST" | "PUT" | "DELETE";
@@ -8,6 +6,7 @@ interface FetchOptions<TBody> {
   pathParams?: Record<string, string | number>;
   headers?: Record<string, string>;
   next?: NextFetchRequestConfig;
+  cache?: RequestCache;
 }
 
 const replacePathParams = (
@@ -51,8 +50,12 @@ export const fetcher = async <TResponse, TBody = undefined>({
   queryParams,
   pathParams,
   headers = {},
+  cache,
   next,
 }: FetchOptions<TBody>): Promise<TResponse> => {
+  const API_SERVER_URL =
+    process.env.API_SERVER_URL || process.env.NEXT_PUBLIC_API_SERVER_URL;
+
   const replacedUrl = replacePathParams(url, pathParams);
   const fullUrl = `${API_SERVER_URL}${buildUrl(replacedUrl, queryParams)}`;
 
@@ -61,6 +64,7 @@ export const fetcher = async <TResponse, TBody = undefined>({
     headers: { ...headers },
     body: generateBody(body),
     next,
+    cache,
   });
 
   if (!res.ok) {

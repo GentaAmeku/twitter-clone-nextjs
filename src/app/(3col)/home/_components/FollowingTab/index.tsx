@@ -1,9 +1,10 @@
 "use client";
 
 import PostList from "@/app/(3col)/_components/PostList";
+import TabPanel from "@/app/(3col)/_components/Tabs/Panel";
 import PostInputForm from "@/app/(3col)/home/_components/PostInputForm";
-import { FollowingTab as Tab } from "@/app/(3col)/home/_components/Tabs";
 import type { PostsResponse, User } from "@/types";
+import { TAB_FOLLOWING } from "../../_data";
 import { fetchFollowersPost } from "./actions";
 
 type FollowingTabProps = {
@@ -21,9 +22,9 @@ const getFollowersPostKey = (
 
 export default function FollowingTab({ user }: FollowingTabProps) {
   return (
-    <Tab>
+    <TabPanel value={TAB_FOLLOWING}>
       <PostInputForm user={user} />
       <PostList getKey={getFollowersPostKey} action={fetchFollowersPost} />
-    </Tab>
+    </TabPanel>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
 
-import { LikesTab as Tab } from "@/app/(3col)/[id]/_components/ProfileTabs/components/Tabs";
 import PostList from "@/app/(3col)/_components/PostList";
+import Tabs from "@/app/(3col)/_components/Tabs";
+import TabPanel from "@/app/(3col)/_components/Tabs/Panel";
 import type { PostsResponse } from "@/types";
+import { TAB_LIKES } from "../../data";
 import { fetchMyLikes } from "./actions";
 
 type PostsTabProps = {
@@ -18,8 +20,8 @@ const getMyLikesKey =
 
 export default function LikesTab({ userId }: PostsTabProps) {
   return (
-    <Tab>
+    <TabPanel value={TAB_LIKES}>
       <PostList getKey={getMyLikesKey(userId)} action={fetchMyLikes} />
-    </Tab>
+    </TabPanel>
   );
 }

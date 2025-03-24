@@ -1,8 +1,8 @@
-import { http, HttpResponse, type RequestHandler } from "msw";
 import dayjs from "dayjs";
 import ja from "dayjs/locale/ja";
-import type { Post } from "../types";
+import { http, HttpResponse, type RequestHandler } from "msw";
 import { v4 as uuidv4 } from "uuid";
+import type { Post } from "../types";
 import { generateLoginUser, mockUsers } from "./users";
 
 dayjs.locale(ja);

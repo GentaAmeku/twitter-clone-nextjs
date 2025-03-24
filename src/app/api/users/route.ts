@@ -12,6 +12,7 @@ export function GET(request: NextRequest) {
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
     const email = searchParams.get("email") as string;
     const password = searchParams.get("password") as string;
+    const ids = searchParams.get("ids");
 
     const users = usersDb.getAll();
 
@@ -19,6 +20,15 @@ export function GET(request: NextRequest) {
       const targets = users.filter((user) => {
         return user.email === email && user.password === password;
       });
+      const response: ResponseData<User[]> = {
+        success: true,
+        data: targets,
+      };
+      return Response.json(response);
+    }
+
+    if (ids) {
+      const targets = users.filter((user) => ids.includes(user.user_id));
       const response: ResponseData<User[]> = {
         success: true,
         data: targets,

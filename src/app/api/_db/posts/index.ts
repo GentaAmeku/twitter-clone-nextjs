@@ -1,6 +1,6 @@
 import { getRandomInt } from "@/lib/utils";
+import { dayjs } from "@/lib/utils/dayjs";
 import type { Post, PostWithUser, Trend, User } from "@/types";
-import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
 import { type Model, createDatabase } from "../createDatabase";
 
@@ -43,6 +43,7 @@ export default function createPostsDatabase(
   const users = usersDb.getAll();
   const trends = trendsDb.getAll();
   const posts = generateMockPosts(trends, users);
+  // FIXME:Temporarily merge user information
   const db = createDatabase<PostWithUser>(mergeUser(posts, users));
   return db();
 }

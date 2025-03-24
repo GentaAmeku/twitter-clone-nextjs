@@ -1,9 +1,10 @@
 "use client";
 
 import PostList from "@/app/(3col)/_components/PostList";
+import TabPanel from "@/app/(3col)/_components/Tabs/Panel";
 import PostInputForm from "@/app/(3col)/home/_components/PostInputForm";
-import { ForyouTab as Tab } from "@/app/(3col)/home/_components/Tabs";
 import type { PostsResponse, User } from "@/types";
+import { TAB_FOR_YOU } from "../../_data";
 import { fetchPost } from "./actions";
 
 type ForyouTabProps = {
@@ -18,9 +19,9 @@ const getPostKey = (pageIndex: number, previousPageData: PostsResponse) => {
 
 export default function ForyouTab({ user }: ForyouTabProps) {
   return (
-    <Tab>
+    <TabPanel value={TAB_FOR_YOU}>
       <PostInputForm user={user} />
       <PostList getKey={getPostKey} action={fetchPost} />
-    </Tab>
+    </TabPanel>
   );
 }

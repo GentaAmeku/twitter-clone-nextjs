@@ -45,6 +45,12 @@ export default function PostInputForm({ user }: PostInputFormProps) {
 
   const handleClickAvatar = () => router.push(`/${user.user_id}`);
 
+  useEffect(() => {
+    if (user.user_id) {
+      router.prefetch(`/${user.user_id}`);
+    }
+  }, [router, user.user_id]);
+
   // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     if (lastResult?.status === "success") {

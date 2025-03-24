@@ -3,12 +3,19 @@
 import { ActionIcon, Avatar, Button, Flex, Text } from "@/lib/mantine/core";
 import type { User } from "@/types";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 type FollowAnchorProps = User;
 
 const FollowAnchor = ({ name, user_id }: FollowAnchorProps) => {
   const router = useRouter();
   const handleClickAvatar = () => router.push(`/${user_id}`);
+
+  useEffect(() => {
+    if (user_id) {
+      router.prefetch(`/${user_id}`);
+    }
+  }, [router, user_id]);
 
   return (
     <Flex
