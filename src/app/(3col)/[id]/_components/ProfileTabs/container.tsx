@@ -1,5 +1,3 @@
-"use server";
-
 import ProfileTabs from "./presentational";
 
 export default async function ProfileTabsContainer({
