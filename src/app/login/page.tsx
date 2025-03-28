@@ -2,8 +2,8 @@ import { PAGE_SIZE } from "@/constants";
 import { Card, Container, Flex } from "@/lib/mantine/core";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import LeftSide from "./_components/LeftSide.tsx";
-import RightSide from "./_components/RightSide";
+import LeftSide from "./components/LeftSide.tsx/index.jsx";
+import RightSide from "./components/RightSide.jsx";
 
 export const metadata: Metadata = {
   title: "Login / twitter-clone",

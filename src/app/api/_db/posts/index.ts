@@ -43,7 +43,6 @@ export default function createPostsDatabase(
   const users = usersDb.getAll();
   const trends = trendsDb.getAll();
   const posts = generateMockPosts(trends, users);
-  // FIXME:Temporarily merge user information
-  const db = createDatabase<PostWithUser>(mergeUser(posts, users));
+  const db = createDatabase<Post>(posts);
   return db();
 }

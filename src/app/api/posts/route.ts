@@ -34,33 +34,10 @@ export function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const cursor = searchParams.get("cursor");
     const limitParam = searchParams.get("limit");
-    const search = searchParams.get("search");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
 
     const posts = postsDb.getAll();
     const sortedPosts = sortByTime(posts);
-
-    if (search) {
-      const searchedPosts = sortedPosts.filter((post) =>
-        post.text.toLowerCase().includes(search.toLowerCase()),
-      );
-      const i = searchedPosts.findIndex((d) => d.id === cursor);
-      const offset = i === -1 ? 0 : i + 1;
-      const result =
-        limit !== undefined
-          ? searchedPosts.slice(offset, offset + limit)
-          : searchedPosts;
-
-      const response: ResponseData<PostsResponse> = {
-        success: true,
-        data: {
-          data: result,
-          next_cursor: result.at(-1)?.id || "",
-          has_next: result.length > 0,
-        },
-      };
-      return Response.json(response);
-    }
 
     const i = sortedPosts.findIndex((d) => d.id === cursor);
     const offset = i === -1 ? 0 : i + 1;

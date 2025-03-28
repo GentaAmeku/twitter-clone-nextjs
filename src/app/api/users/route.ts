@@ -7,7 +7,6 @@ export function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const offset = Number(searchParams.get("offset") || 0);
-    const search = searchParams.get("search");
     const limitParam = searchParams.get("limit");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
     const email = searchParams.get("email") as string;
@@ -33,20 +32,6 @@ export function GET(request: NextRequest) {
         success: true,
         data: targets,
       };
-      return Response.json(response);
-    }
-
-    if (search) {
-      const searchedUsers = users.filter(
-        (u) =>
-          u.name.toLowerCase().includes(search) ||
-          u.user_id.toLowerCase().includes(search),
-      );
-      const response: ResponseData<User[]> = {
-        success: true,
-        data: searchedUsers,
-      };
-
       return Response.json(response);
     }
 

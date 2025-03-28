@@ -1,9 +1,9 @@
 import { BackgroundImage, Box } from "@/lib/mantine/core";
 import type { Metadata } from "next";
-import HeaderNavigation from "./_components/HeaderNavigation";
-import ProfileBody from "./_components/ProfileBody";
-import ProfileHeader from "./_components/ProfileHeader";
-import ProfileTabs from "./_components/ProfileTabs";
+import HeaderNavigation from "./components/HeaderNavigation";
+import ProfileBody from "./components/ProfileBody";
+import ProfileHeader from "./components/ProfileHeader";
+import ProfileTabs from "./components/ProfileTabs";
 
 export const metadata: Metadata = {
   title: "Profile / twitter-clone",
