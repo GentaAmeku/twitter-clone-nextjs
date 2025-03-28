@@ -2,7 +2,7 @@
 
 import PostList from "@/app/(3col)/components/PostList";
 import TabPanel from "@/app/(3col)/components/Tabs/Panel";
-import PostInputForm from "@/app/(3col)/home/_components/PostInputForm";
+import PostInputForm from "@/app/(3col)/home/components/PostInputForm";
 import type { PostsResponse, User } from "@/types";
 import { TAB_FOLLOWING } from "../../data";
 import { fetchFollowersPost } from "./actions";
