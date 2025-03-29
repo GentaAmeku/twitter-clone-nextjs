@@ -8,7 +8,7 @@ export function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const cursor = searchParams.get("cursor");
     const limitParam = searchParams.get("limit");
-    const search = searchParams.get("search");
+    const search = searchParams.get("q");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
 
     if (!search) {

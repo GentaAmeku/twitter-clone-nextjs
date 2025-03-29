@@ -1,17 +1,15 @@
-import { postsDb } from "@/app/api/_db";
+import { handleError } from "@/app/api/_utils/errorHandler";
+import { getAllPostsWithUsers } from "@/app/api/_utils/getAllPostsWithUsers";
 import { sortByTime } from "@/lib/utils";
-import { dayjs } from "@/lib/utils/dayjs";
-import type { PostWithUser, PostsResponse, ResponseData, User } from "@/types";
+import type { PostsResponse, ResponseData } from "@/types";
 import type { NextRequest } from "next/server";
-import { v4 as uuidv4 } from "uuid";
-import { handleError } from "../../_utils/errorHandler";
 
 export function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const cursor = searchParams.get("cursor");
     const limitParam = searchParams.get("limit");
-    const search = searchParams.get("search");
+    const search = searchParams.get("q");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
 
     if (!search) {
@@ -21,7 +19,7 @@ export function GET(request: NextRequest) {
       });
     }
 
-    const posts = postsDb.getAll();
+    const posts = getAllPostsWithUsers();
     const sortedPosts = sortByTime(posts);
 
     const searchedPosts = sortedPosts.filter((post) =>

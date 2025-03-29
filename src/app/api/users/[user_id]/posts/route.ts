@@ -1,5 +1,5 @@
-import { postsDb } from "@/app/api/_db";
 import { handleError } from "@/app/api/_utils/errorHandler";
+import { getAllPostsWithUsers } from "@/app/api/_utils/getAllPostsWithUsers";
 import { NotFound } from "@/app/api/_utils/notFound";
 import { sortByTime } from "@/lib/utils";
 import type { PostsResponse, ResponseData } from "@/types";
@@ -19,7 +19,7 @@ export async function GET(
     const limitParam = searchParams.get("limit");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
 
-    const posts = postsDb.getAll();
+    const posts = getAllPostsWithUsers();
     const userPosts = posts.filter((post) => post.user_id === user_id);
     const sorted = sortByTime(userPosts);
 

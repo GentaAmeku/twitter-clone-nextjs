@@ -1,5 +1,6 @@
-import { postsDb, usersDb } from "@/app/api/_db";
+import { usersDb } from "@/app/api/_db";
 import { handleError } from "@/app/api/_utils/errorHandler";
+import { getAllPostsWithUsers } from "@/app/api/_utils/getAllPostsWithUsers";
 import { NotFound } from "@/app/api/_utils/notFound";
 import { sortByTime } from "@/lib/utils";
 import type { PostsResponse, ResponseData, User } from "@/types";
@@ -22,7 +23,7 @@ export async function GET(
     const { followers } = usersDb.get(
       (user) => user.user_id === user_id,
     ) as User;
-    const posts = postsDb.getAll();
+    const posts = getAllPostsWithUsers();
     const followersPosts = posts.filter((post) =>
       followers.some((u) => u.user_id === post.user_id),
     );

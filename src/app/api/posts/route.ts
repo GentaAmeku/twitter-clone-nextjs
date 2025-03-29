@@ -12,6 +12,7 @@ import type {
 import type { NextRequest } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { handleError } from "../_utils/errorHandler";
+import { getAllPostsWithUsers } from "../_utils/getAllPostsWithUsers";
 
 const generatePostData = (text: string, user: User): PostWithUser => {
   const now = dayjs();
@@ -36,7 +37,8 @@ export function GET(request: NextRequest) {
     const limitParam = searchParams.get("limit");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
 
-    const posts = postsDb.getAll();
+    const posts = getAllPostsWithUsers();
+
     const sortedPosts = sortByTime(posts);
 
     const i = sortedPosts.findIndex((d) => d.id === cursor);

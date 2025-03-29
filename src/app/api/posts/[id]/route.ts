@@ -1,6 +1,6 @@
-import { postsDb } from "@/app/api/_db";
+import { postsDb, usersDb } from "@/app/api/_db";
 import { NotFound } from "@/app/api/_utils/notFound";
-import type { PostWithUser, ResponseData } from "@/types";
+import type { Post, PostWithUser, ResponseData } from "@/types";
 import { handleError } from "../../_utils/errorHandler";
 
 export async function GET(
@@ -12,11 +12,12 @@ export async function GET(
     if (!id) {
       return NotFound({ message: "Post not found" });
     }
-    const post = postsDb.get((post) => post.id === id);
+    const post = postsDb.get((post) => post.id === id) as Post;
+    const user = usersDb.get((user) => user.id === post.user_id);
 
     const response: ResponseData<PostWithUser | undefined> = {
       success: true,
-      data: post,
+      data: { ...post, user },
     };
 
     return Response.json(response);
