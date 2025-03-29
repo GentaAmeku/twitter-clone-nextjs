@@ -11,18 +11,22 @@ export async function middleware(request: NextRequest) {
 
   const path = new URL(request.url).pathname;
 
-  if (path === "/") return response;
+  if (path === "/login") return response;
 
   try {
     const { data: user } = await get<SuccessResponse<User>>({
       url: "/api/users/me",
     });
     if (!user) {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/login", request.url));
     }
+
+    if (path === "/")
+      return NextResponse.redirect(new URL("/home", request.url));
+
     return response;
   } catch (error) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 }
 

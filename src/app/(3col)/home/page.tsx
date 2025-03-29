@@ -1,10 +1,10 @@
-import Tabs from "@/app/(3col)/_components/Tabs";
+import Tabs from "@/app/(3col)/components/Tabs";
 import { get } from "@/lib/utils/fetcher";
 import type { SuccessResponse, User } from "@/types";
 import type { Metadata } from "next";
-import ForyouTab from "./_components/FollowingTab";
-import FollowingTab from "./_components/ForyouTab";
-import { TAB_FOR_YOU, tabs } from "./_data";
+import ForyouTab from "./components/FollowingTab";
+import FollowingTab from "./components/ForyouTab";
+import { TAB_FOR_YOU, tabs } from "./data";
 
 export const metadata: Metadata = {
   title: "Home / twitter-clone",

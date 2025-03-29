@@ -1,33 +1,36 @@
 import { handleError } from "@/app/api/_utils/errorHandler";
 import { getAllPostsWithUsers } from "@/app/api/_utils/getAllPostsWithUsers";
-import { NotFound } from "@/app/api/_utils/notFound";
 import { sortByTime } from "@/lib/utils";
 import type { PostsResponse, ResponseData } from "@/types";
 import type { NextRequest } from "next/server";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ user_id: string }> },
-) {
+export function GET(request: NextRequest) {
   try {
-    const user_id = (await params).user_id;
-    if (!user_id) {
-      return NotFound({ message: "User not found" });
-    }
     const searchParams = request.nextUrl.searchParams;
     const cursor = searchParams.get("cursor");
     const limitParam = searchParams.get("limit");
+    const search = searchParams.get("q");
     const limit = limitParam ? Math.min(Number(limitParam), 1000) : undefined;
 
+    if (!search) {
+      return Response.json({
+        success: false,
+        error: "search is required",
+      });
+    }
+
     const posts = getAllPostsWithUsers();
-    const userPosts = posts.filter((post) => post.user_id === user_id);
-    const sorted = sortByTime(userPosts);
+    const sortedPosts = sortByTime(posts);
 
-    const i = sorted.findIndex((d) => d.id === cursor);
+    const searchedPosts = sortedPosts.filter((post) =>
+      post.text.toLowerCase().includes(search.toLowerCase()),
+    );
+    const i = searchedPosts.findIndex((d) => d.id === cursor);
     const offset = i === -1 ? 0 : i + 1;
-
     const result =
-      limit !== undefined ? sorted.slice(offset, offset + limit) : sorted;
+      limit !== undefined
+        ? searchedPosts.slice(offset, offset + limit)
+        : searchedPosts;
 
     const response: ResponseData<PostsResponse> = {
       success: true,

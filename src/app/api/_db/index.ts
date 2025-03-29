@@ -9,15 +9,12 @@ const globalDb = global as unknown as {
 };
 
 if (!globalDb.usersDb) {
-  console.info("Creating users database...");
   globalDb.usersDb = createUsersDatabase();
 }
 if (!globalDb.trendsDb) {
-  console.info("Creating trends database...");
   globalDb.trendsDb = createTrendsDatabase();
 }
 if (!globalDb.postsDb) {
-  console.info("Creating posts database...");
   globalDb.postsDb = createPostsDatabase(globalDb.usersDb, globalDb.trendsDb);
 }
 

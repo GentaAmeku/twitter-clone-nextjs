@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ExplorerContent from "./_components/ExplorerContent";
-import TrendListContainer from "./_components/TrendList/container";
+import ExplorerContent from "./components/ExplorerContent";
+import TrendListContainer from "./components/TrendList/container";
 
 export const metadata: Metadata = {
   title: "Explorer / twitter-clone",
