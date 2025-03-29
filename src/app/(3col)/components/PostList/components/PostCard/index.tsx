@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionIcon, Avatar, Box, Flex, Text } from "@/lib/mantine/core";
+import { ActionIcon, Avatar, Flex, Text } from "@/lib/mantine/core";
 import type { PostWithUser } from "@/types";
 import { IconDots, IconRosetteDiscountCheckFilled } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";

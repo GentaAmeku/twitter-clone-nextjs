@@ -1,7 +1,6 @@
 "use client";
 
 import PostList from "@/app/(3col)/components/PostList";
-import Tabs from "@/app/(3col)/components/Tabs";
 import TabPanel from "@/app/(3col)/components/Tabs/Panel";
 import type { PostsResponse } from "@/types";
 import { TAB_LIKES } from "../../data";

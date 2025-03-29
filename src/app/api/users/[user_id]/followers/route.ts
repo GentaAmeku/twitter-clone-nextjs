@@ -2,7 +2,7 @@ import { usersDb } from "@/app/api/_db";
 import { handleError } from "@/app/api/_utils/errorHandler";
 import { NotFound } from "@/app/api/_utils/notFound";
 import type { ResponseData, User } from "@/types";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function GET(
   request: NextRequest,

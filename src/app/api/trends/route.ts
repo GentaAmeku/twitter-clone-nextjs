@@ -1,6 +1,6 @@
 import { trendsDb } from "@/app/api/_db";
 import type { ResponseData, Trend } from "@/types";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { handleError } from "../_utils/errorHandler";
 
 export function GET(request: NextRequest) {
